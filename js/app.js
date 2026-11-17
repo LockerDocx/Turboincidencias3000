@@ -11,6 +11,7 @@ import {
 import { computeStats } from './stats.js';
 import { createWindowManager } from './windows.js';
 import { createViews } from './views.js';
+import { initEaster } from './easter.js';
 import { redrawAll } from './charts.js';
 import {
   esc, num, dec, pct, fmtDate, todayISO, download, toCsv, nowTime, clockTime,
@@ -26,6 +27,7 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const screenEl = $('#screen');
 const glassEl = $('#glass');
 const monitorEl = $('#monitor');
+const roomEl = $('#room');
 const workspaceEl = $('#workspace');
 const layerEl = $('#winLayer');
 const fileInput = $('#fileInput');
@@ -48,6 +50,7 @@ const DEFAULT_SETTINGS = {
 };
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let easterApi = null;
 
 /* ------------------------------------------------------------------ */
 /* Estado                                                              */
@@ -971,14 +974,14 @@ function initKeyboard() {
   const keyboard = $('#keyboard');
   if (!keyboard) return;
   const rows = [
-    ['w2', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'w2'],
-    ['w2', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'w3'],
-    ['w2', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'w3'],
-    ['w3', 1, 1, 1, 1, 1, 1, 1, 1, 1, 'w3'],
-    ['w6', 1, 1, 1, 1, 'w6']
+    [['ESC', 'w2'], ['1'], ['2'], ['3'], ['4'], ['5'], ['6'], ['7'], ['8'], ['9'], ['0'], ['-'], ['BORRAR', 'w2']],
+    [['TAB', 'w2'], ['Q'], ['W'], ['E'], ['R'], ['T'], ['Y'], ['U'], ['I'], ['O'], ['P'], ['['], [']']],
+    [['BLOQ', 'w2'], ['A'], ['S'], ['D'], ['F'], ['G'], ['H'], ['J'], ['K'], ['L'], ['Ñ'], [';']],
+    [['MAY', 'w2'], ['Z'], ['X'], ['C'], ['V'], ['B'], ['N'], ['M'], [','], ['.'], ['/']],
+    [['CTRL', 'w2'], ['ALT'], ['ESPACIO', 'w6'], ['ALT'], ['CTRL'], ['FN', 'w2']]
   ];
-  keyboard.innerHTML = rows.map((row) => `<div class="krow">${row.map((key) =>
-    `<i class="${key === 1 ? '' : key}"></i>`).join('')}</div>`).join('');
+  keyboard.innerHTML = rows.map((row) => `<div class="krow">${row.map(([label, cls = '']) =>
+    `<i class="${cls}" data-key="${label.toLowerCase()}">${label === 'ESPACIO' ? '' : label}</i>`).join('')}</div>`).join('');
 }
 
 let pointerX = 0;
@@ -987,6 +990,8 @@ let targetRX = 0;
 let targetRY = 0;
 let currentRX = 0;
 let currentRY = 0;
+let manualRX = 0;
+let manualRY = 0;
 let lastPointer = 0;
 let rafId = 0;
 
@@ -1007,31 +1012,62 @@ function initTilt() {
       glare.style.setProperty('--gx', `${Math.round((relX + 1) * 50)}%`);
       glare.style.setProperty('--gy', `${Math.round((relY + 1) * 45)}%`);
     }
+    roomEl.style.setProperty('--px', relX.toFixed(3));
+    roomEl.style.setProperty('--py', relY.toFixed(3));
   };
 
   window.addEventListener('pointermove', updateTarget, { passive: true });
   document.addEventListener('pointerleave', () => {
     targetRX = 0;
     targetRY = 0;
+    roomEl.style.setProperty('--px', '0');
+    roomEl.style.setProperty('--py', '0');
   });
 
   const loop = (now) => {
     const idle = now - lastPointer > 3500;
     const swayX = idle ? Math.sin(now / 2600) * 0.35 : 0;
     const swayY = idle ? Math.cos(now / 3400) * 0.45 : 0;
-    const wantRX = state.settings.tilt ? targetRX : 0;
-    const wantRY = state.settings.tilt ? targetRY : 0;
+    const wantRX = state.settings.tilt ? targetRX + manualRX : 0;
+    const wantRY = state.settings.tilt ? targetRY + manualRY : 0;
     currentRX += (wantRX + swayX - currentRX) * 0.07;
     currentRY += (wantRY + swayY - currentRY) * 0.07;
     if (state.settings.tilt) {
       monitorEl.style.setProperty('--tilt-x', `${currentRX.toFixed(3)}deg`);
       monitorEl.style.setProperty('--tilt-y', `${currentRY.toFixed(3)}deg`);
+      monitorEl.style.setProperty('--pan-x', (pointerX * 6).toFixed(2));
+      monitorEl.style.setProperty('--pan-y', (pointerY * 4).toFixed(2));
     } else {
       monitorEl.style.setProperty('--tilt-x', '0deg');
       monitorEl.style.setProperty('--tilt-y', '0deg');
+      monitorEl.style.setProperty('--pan-x', '0');
+      monitorEl.style.setProperty('--pan-y', '0');
     }
     rafId = requestAnimationFrame(loop);
   };
+  // Arrastrar el chasis para girarlo un poco (vuelve solo)
+  let drag = null;
+  const onDrag = (event) => {
+    if (!drag) return;
+    manualRY = clamp((event.clientX - drag.x) * 0.075, -10, 10);
+    manualRX = clamp((event.clientY - drag.y) * -0.055, -7, 7);
+  };
+  const endDrag = () => {
+    drag = null;
+    manualRX = 0;
+    manualRY = 0;
+    monitorEl.classList.remove('is-grabbing');
+    window.removeEventListener('pointermove', onDrag);
+  };
+  monitorEl.addEventListener('pointerdown', (event) => {
+    if (event.button !== 0 || event.target.closest('.screen')) return;
+    if (!event.target.closest('.monitor__chin, .monitor__sticker')) return;
+    drag = { x: event.clientX, y: event.clientY };
+    monitorEl.classList.add('is-grabbing');
+    window.addEventListener('pointermove', onDrag);
+    window.addEventListener('pointerup', endDrag, { once: true });
+  });
+
   cancelAnimationFrame(rafId);
   rafId = requestAnimationFrame(loop);
 }
@@ -1157,6 +1193,17 @@ async function boot() {
   computeResults();
   updateChrome();
   initTilt();
+  easterApi = initEaster({
+    screen: screenEl,
+    monitor: monitorEl,
+    glass: glassEl,
+    sound,
+    toast,
+    pushLog,
+    getSettings: () => state.settings,
+    setSetting,
+    isPowered: () => powered
+  });
 
   pushLog('ok', 'TURBO/OS 3.0 iniciado');
   pushLog('info', 'Parser XML listo · filtros de calidad activos');
@@ -1198,4 +1245,4 @@ async function boot() {
 boot();
 
 // expuesto para depuración en consola
-window.turbo = { state, wm, app, computeResults, loadText, loadDemo };
+window.turbo = { state, wm, app, computeResults, loadText, loadDemo, easter: easterApi, saver: easterApi?.saver };

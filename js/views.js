@@ -830,7 +830,7 @@ export function createViews(app) {
           <dt><kbd>S</kbd></dt><dd>abrir Filtros</dd>
           <dt><kbd>I</kbd></dt><dd>abrir Informe</dd>
           <dt><kbd>Esc</kbd></dt><dd>cerrar ventana activa</dd>
-          <dt><kbd>↑ ↓</kbd></dt><dd>registro anterior / siguiente en el detalle</dd>
+          <dt><kbd>ARRIBA</kbd> <kbd>ABAJO</kbd></dt><dd>registro anterior / siguiente en el detalle</dd>
         </dl>
       </div>
     </div>`;
@@ -988,7 +988,7 @@ export function createViews(app) {
           <dt><kbd>F</kbd></dt><dd>alternar pantalla plana / 3D</dd>
           <dt><kbd>A</kbd> <kbd>D</kbd> <kbd>S</kbd> <kbd>I</kbd></dt><dd>análisis · datos · filtros · informe</dd>
           <dt><kbd>Esc</kbd></dt><dd>cerrar la ventana activa</dd>
-          <dt><kbd>↑</kbd> <kbd>↓</kbd></dt><dd>registro anterior / siguiente</dd>
+          <dt><kbd>ARRIBA</kbd> <kbd>ABAJO</kbd></dt><dd>registro anterior / siguiente</dd>
           <dt><kbd>Espacio</kbd></dt><dd>encender o apagar el monitor cuando está en standby</dd>
         </dl>
       </div>
@@ -1004,11 +1004,22 @@ export function createViews(app) {
       </div>
 
       <div class="sec">
+        <div class="sec__head"><h3>${icon('info')}Secretos del chasis</h3><span class="sub">el monitor también juega</span></div>
+        <ul class="note">
+          <li><b>Degauss</b>: pulsa la placa <code>TURBO 3000</code> del frontal o haz doble clic en el marco del tubo.</li>
+          <li><b>Fósforo</b>: el LED del frontal cicla ámbar, verde, azul y hueso.</li>
+          <li><b>Teclado de la mesa</b>: las teclas se iluminan al escribir y responden al clic.</li>
+          <li><b>Salvapantallas</b>: deja el monitor quieto un minuto.</li>
+          <li><b>???</b>: <kbd>ARRIBA</kbd><kbd>ARRIBA</kbd><kbd>ABAJO</kbd><kbd>ABAJO</kbd><kbd>IZQ</kbd><kbd>DER</kbd><kbd>IZQ</kbd><kbd>DER</kbd><kbd>B</kbd><kbd>A</kbd></li>
+        </ul>
+      </div>
+
+      <div class="sec">
         <div class="sec__head"><h3>${icon('tag')}Créditos</h3></div>
         <ul class="note">
           <li>Port web de <code>incidencias_basico.py</code> (rich + ElementTree) a HTML/CSS/JS puro.</li>
           <li>Estética inspirada en el template <i>Nostalgia Computer</i> de Framer.</li>
-          <li>Tipografías: Silkscreen, Pixelify Sans e IBM Plex Mono (Google Fonts).</li>
+          <li>Tipografías: Silkscreen, Pixelify Sans e IBM Plex Mono, autoalojadas en <code>assets/fonts</code>.</li>
           <li>Privacidad: el XML se procesa en memoria y nunca se envía a Internet.</li>
         </ul>
       </div>

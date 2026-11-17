@@ -24,16 +24,22 @@
 <body>
 
 <div class="room" id="room">
+  <div class="lightpatch" aria-hidden="true"></div>
+  <div class="room__bars" aria-hidden="true"></div>
   <div class="lightshaft lightshaft--a" aria-hidden="true"></div>
   <div class="lightshaft lightshaft--b" aria-hidden="true"></div>
   <div class="dust" id="dust" aria-hidden="true"></div>
-  <div class="floor" aria-hidden="true"></div>
+  <div class="floor" aria-hidden="true"><i class="floor__grain"></i><i class="floor__edge"></i></div>
+  <div class="room__vignette" aria-hidden="true"></div>
 
   <div class="scene" id="scene">
     <div class="monitor" id="monitor">
+      <div class="monitor__wallshadow" aria-hidden="true"></div>
+      <div class="monitor__bloom" aria-hidden="true"></div>
       <div class="monitor__shadow" aria-hidden="true"></div>
       <div class="monitor__spill" aria-hidden="true"></div>
 
+      <div class="monitor__shell" aria-hidden="true"></div>
       <div class="monitor__case">
         <div class="monitor__sticker">TURBO<b>SYSTEMS</b> · CRT-3000</div>
 
@@ -154,6 +160,12 @@
                 <button class="boot__skip" id="bootSkip">saltar [ESC]</button>
               </div>
 
+              <!-- salvapantallas -->
+              <div class="saver" id="saver" aria-hidden="true">
+                <canvas id="saverCanvas"></canvas>
+                <p class="saver__hint">mueve el ratón o pulsa una tecla</p>
+              </div>
+
               <!-- standby -->
               <div class="standby" id="standby">
                 <div>
@@ -171,11 +183,11 @@
         </div>
 
         <div class="monitor__chin">
-          <span class="brand">TURBO<b>3000</b><em>HIGH RESOLUTION</em></span>
+          <button class="brand" id="brandPlate" title="Placa del fabricante · degauss">TURBO<b>3000</b><em>HIGH RESOLUTION</em></button>
           <div class="chin__controls">
-            <button class="mini-btn" tabindex="-1" aria-hidden="true"></button>
-            <button class="mini-btn" tabindex="-1" aria-hidden="true"></button>
-            <span class="led is-off" id="led" aria-hidden="true"></span>
+            <button class="mini-btn" id="miniScan" title="Scanlines" aria-label="Activar o desactivar scanlines"></button>
+            <button class="mini-btn" id="miniSound" title="Sonido" aria-label="Activar o desactivar sonido"></button>
+            <button class="led is-off" id="led" title="Cambiar fósforo" aria-label="Cambiar el color del fósforo"></button>
             <button class="power" id="powerBtn" aria-label="Encender o apagar el monitor" data-icon="power"></button>
           </div>
         </div>
@@ -187,13 +199,14 @@
     </div>
   </div>
 
-  <div class="deskprops" aria-hidden="true">
-    <div class="keyboard" id="keyboard"></div>
-    <div class="mouse"></div>
-    <div class="cable"></div>
+  <div class="deskprops">
+    <div class="keyboard" id="keyboard" role="presentation"></div>
+    <button class="mouse" id="deskMouse" aria-label="Ratón del escritorio"></button>
+    <div class="cable" aria-hidden="true"></div>
+    <div class="cable cable--monitor" aria-hidden="true"></div>
   </div>
 
-  <p class="hint-3d">mueve el cursor · inclinación 3D · <span id="hintFocus">F para pantalla plana</span></p>
+  <p class="hint-3d">mueve el cursor · arrastra el monitor · <span id="hintFocus">F para pantalla plana</span></p>
 </div>
 
 <input type="file" id="fileInput" accept=".xml,text/xml,application/xml" hidden>

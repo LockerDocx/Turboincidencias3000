@@ -712,6 +712,60 @@
   color: #4d3915;
 }
 
+/* ---------- Salvapantallas de fósforo ---------- */
+.saver {
+  position: absolute;
+  inset: 0;
+  z-index: 39;
+  display: none;
+  background: #030201;
+}
+.saver.is-on { display: block; animation: saver-in .5s var(--ease-out); }
+@keyframes saver-in { from { opacity: 0; } to { opacity: 1; } }
+.saver canvas { display: block; width: 100%; height: 100%; }
+.saver__hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1.3em;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: .6em;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--phos-dim);
+  opacity: .75;
+}
+
+/* ---------- Modo turbo (easter egg) ---------- */
+.screen.is-turbo { animation: turbo-glow 1.5s steps(5, end) infinite; }
+@keyframes turbo-glow {
+  0%, 100% { filter: brightness(1) saturate(1); }
+  40%      { filter: brightness(1.12) saturate(1.25); }
+  70%      { filter: brightness(1.04) saturate(1.4); }
+}
+.screen.is-turbo .crt--flicker { animation-duration: .9s; opacity: .9; }
+.turbo-badge {
+  position: absolute;
+  z-index: 39;
+  left: 50%;
+  top: 9%;
+  transform: translateX(-50%);
+  padding: .4em .9em .35em;
+  border: 1px solid var(--phos);
+  background: rgba(4, 3, 1, .72);
+  font-family: var(--font-pixel);
+  font-size: .74em;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--phos-hi);
+  text-shadow: 0 0 10px var(--phos);
+  pointer-events: none;
+  animation: turbo-badge-blink 1.5s steps(2, end) infinite;
+}
+@keyframes turbo-badge-blink { 0%, 70% { opacity: 1; } 71%, 100% { opacity: .55; } }
+
 /* ---------- Escalado fino ---------- */
 @media (max-width: 1180px) {
   .screen { font-size: clamp(11.4px, 1.65cqw, 14px); }

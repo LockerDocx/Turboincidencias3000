@@ -31,7 +31,8 @@
     transform: none !important;
     transition: none;
   }
-  .monitor__shadow, .monitor__spill, .monitor__neck, .monitor__base,
+  .monitor__shadow, .monitor__spill, .monitor__wallshadow, .monitor__bloom, .monitor__shell,
+  .monitor__neck, .monitor__base,
   .monitor__sticker, .monitor__knobs, .monitor__vents, .monitor__chin,
   .monitor__case::before, .monitor__case::after { display: none; }
   .monitor__case {

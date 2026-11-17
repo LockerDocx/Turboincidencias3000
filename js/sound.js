@@ -97,6 +97,17 @@ const SFX = {
   load() {
     for (let i = 0; i < 6; i++) noise(0.03, 0.03, 1400 + i * 260, i * 0.07);
     tone(1046, 0.12, { delay: 0.44, gain: 0.03, type: 'triangle' });
+  },
+  degauss() {
+    tone(72, 0.52, { gain: 0.055, type: 'sawtooth', slide: 38 });
+    noise(0.4, 0.05, 520);
+    tone(118, 0.2, { delay: 0.06, gain: 0.04, type: 'triangle', slide: 58 });
+  },
+  turbo() {
+    [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => {
+      tone(f, 0.1, { delay: i * 0.07, gain: 0.032, type: 'square' });
+    });
+    noise(0.5, 0.03, 1800);
   }
 };
 

@@ -49,9 +49,13 @@ no se envía a ningún sitio**.
   tareas, reloj, sonido sintetizado con WebAudio, secuencia de arranque del BIOS,
   temas de fósforo (ámbar, verde, azul, hueso), scanlines regulables y modo
   pantalla plana.
-- **3D y sensación de profundidad**: monitor con inclinación según el cursor,
-  reflejo del cristal que acompaña al puntero, sombras, polvo en el haz de luz,
-  teclado en primer plano y apagado/encendido del tubo.
+- **3D y sensación de profundidad**: monitor con inclinación según el cursor y
+  arrastrable (vuelve solo), paralaje de pared, polvo y mesa, reflejo del cristal
+  que sigue al puntero, sombras, polvo en el haz de luz, teclado con teclas que
+  se iluminan y apagado/encendido del tubo.
+- **Secretos del chasis**: degauss al pulsar la placa o hacer doble clic en el
+  marco, LED que cambia el fósforo, salvapantallas de estrellas tras un minuto,
+  código Konami y clics en el teclado y el ratón de la mesa.
 
 ## Cómo usarlo
 
@@ -146,6 +150,7 @@ js/charts.js              timeline, donut y barras en canvas
 js/windows.js             gestor de ventanas
 js/icons.js               iconos de píxel en SVG
 js/sound.js               sonido sintetizado (WebAudio)
+js/easter.js              degauss, salvapantallas, Konami y teclado físico
 assets/fonts/*.woff2      tipografías autoalojadas (latin + latin-ext)
 data/incidencies-demo.xml dataset de ejemplo
 tools/gen-demo.js         generador del dataset
