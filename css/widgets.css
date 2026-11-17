@@ -170,26 +170,28 @@
 }
 .switch input { position: absolute; opacity: 0; pointer-events: none; }
 .switch .track {
-  width: 2.1em;
-  height: 1.05em;
+  width: 2.4em;
+  height: 1.15em;
   border: 1px solid var(--line-strong);
-  background: var(--bg-2);
+  background: rgba(0, 0, 0, .55);
   position: relative;
   flex: none;
-  transition: background .18s;
+  transition: background .18s, border-color .18s;
 }
 .switch .track::after {
   content: "";
   position: absolute;
-  top: 1px;
+  top: 50%;
   left: 1px;
-  width: .82em;
-  height: .82em;
+  width: .88em;
+  height: .88em;
   background: var(--phos-dim);
-  transition: transform .18s var(--ease-out), background .18s;
+  opacity: .7;
+  transform: translateY(-50%);
+  transition: transform .18s var(--ease-out), background .18s, opacity .18s;
 }
-.switch input:checked + .track { background: rgba(var(--phos-rgb), .18); }
-.switch input:checked + .track::after { transform: translateX(1em); background: var(--phos); }
+.switch input:checked + .track { background: rgba(var(--phos-rgb), .2); border-color: var(--phos-dim); }
+.switch input:checked + .track::after { transform: translate(1.42em, -50%); background: var(--phos); opacity: 1; }
 .switch input:focus-visible + .track { outline: 1px solid var(--phos); outline-offset: 2px; }
 
 /* ---------- Barra de filtros ---------- */
@@ -683,7 +685,7 @@
 /* ---------- Presets grandes ---------- */
 .preset-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(13.5em, 1fr));
   gap: .55em;
 }
 .preset-card {
@@ -704,7 +706,7 @@
 .preset-card.is-on { border-color: var(--phos); background: rgba(var(--phos-rgb), .14); box-shadow: 0 0 .9em rgba(var(--phos-rgb), .18); }
 .preset-card strong {
   font-family: var(--font-pixel);
-  font-size: .74em;
+  font-size: .82em;
   font-weight: 400;
   color: var(--phos-hi);
   display: flex;
@@ -719,7 +721,8 @@
   color: var(--phos-dim);
   font-variant-numeric: tabular-nums;
 }
-.preset-card span { font-size: .66em; color: var(--phos-faint); line-height: 1.45; }
+.preset-card span { font-size: .7em; color: var(--phos-dim); line-height: 1.5; }
+.preset-card.is-on span { color: var(--phos-mid); }
 
 /* ---------- Constructor de reglas ---------- */
 .rules { display: flex; flex-direction: column; gap: .5em; }

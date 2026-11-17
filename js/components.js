@@ -97,7 +97,7 @@ export function filterBar({ filter, results, dataset, showPresets = true }) {
     <div class="filterbar__row">
       <label class="search">
         ${icon('search')}
-        <input class="input" type="search" placeholder="Buscar en todas las incidencias…" value="${attr(filter.search)}" data-search data-focus-key="search" autocomplete="off" spellcheck="false">
+        <input class="input" type="search" aria-label="Buscar en todas las incidencias" placeholder="Buscar en todas las incidencias…" value="${attr(filter.search)}" data-search data-focus-key="search" autocomplete="off" spellcheck="false">
       </label>
       <div class="filterbar__count">
         <b>${num(results.rows.length)}</b> / ${num(results.total)} registros

@@ -307,14 +307,14 @@ kbd {
 .panel__body--flush > .sec:last-child { padding-bottom: .5em; }
 
 /* ---------- adaptación al ancho de la ventana (container queries) ---------- */
-@container (max-width: 560px) {
+@container (max-width: 505px) {
   .grid2, .grid3 { grid-template-columns: 1fr; }
   .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .facet-groups { grid-template-columns: 1fr; }
   .btable { font-size: .82em; }
   .chartcard canvas { height: 9em; }
 }
-@container (max-width: 420px) {
+@container (max-width: 400px) {
   .kpis { grid-template-columns: 1fr 1fr; }
   .kpi__value { font-size: 1.35em; }
   .home__stats { grid-template-columns: 1fr 1fr; }

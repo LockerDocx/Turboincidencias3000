@@ -6,7 +6,7 @@ import { icon } from './icons.js';
 import { clamp, esc } from './util.js';
 
 const STORE_PREFIX = 'turbo3000.win.';
-const isMobile = () => window.matchMedia('(max-width: 860px)').matches;
+const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
 
 function loadGeom(id) {
   if (isMobile()) return null;
@@ -94,15 +94,24 @@ export function createWindowManager({ layer, workspace, onChange }) {
     const { width, height } = bounds();
     const defaultW = Math.min(width - 24, Math.round(width * (config.size?.w ?? 0.78)));
     const defaultH = Math.min(height - 24, Math.round(height * (config.size?.h ?? 0.8)));
-    const offset = (cascade % 4) * 18;
+    const offset = (cascade % 4) * 14;
     cascade += 1;
 
     const saved = config.remember === false ? null : loadGeom(id);
+    const margin = 8;
+    const clampX = (x, w) => Math.round(Math.min(Math.max(margin, x), Math.max(margin, width - w - margin)));
+    const clampY = (y, h) => Math.round(Math.min(Math.max(margin, y), Math.max(margin, height - h - margin)));
     const geom = saved
-      ? { ...saved, w: Math.min(saved.w, width), h: Math.min(saved.h, height) }
+      ? {
+          ...saved,
+          w: Math.min(saved.w, width - margin * 2),
+          h: Math.min(saved.h, height - margin * 2),
+          x: clampX(saved.x, saved.w),
+          y: clampY(saved.y, saved.h)
+        }
       : {
-          x: Math.round((width - defaultW) / 2) + offset,
-          y: Math.round(Math.max(8, (height - defaultH) / 2 - 8)) + offset,
+          x: clampX(Math.round((width - defaultW) / 2) + offset, defaultW),
+          y: clampY(Math.round((height - defaultH) / 2 - 8) + offset, defaultH),
           w: defaultW,
           h: defaultH
         };

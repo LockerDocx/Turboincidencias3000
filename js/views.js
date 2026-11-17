@@ -1124,7 +1124,7 @@ export function createViews(app) {
       title: 'Análisis',
       icon: 'chart',
       breadcrumb: ['Desktop', 'Análisis'],
-      size: { w: 0.86, h: 0.9 },
+      size: { w: 0.95, h: 0.95 },
       render: renderAnalisis,
       statusLeft: 'panel de incidencias',
       statusRight: 'clic en una fila para el detalle'
@@ -1133,49 +1133,49 @@ export function createViews(app) {
       title: 'Datos',
       icon: 'floppy',
       breadcrumb: ['Desktop', 'Datos'],
-      size: { w: 0.74, h: 0.86 },
+      size: { w: 0.88, h: 0.92 },
       render: renderDatos
     },
     filtros: {
       title: 'Filtros',
       icon: 'funnel',
       breadcrumb: ['Desktop', 'Filtros'],
-      size: { w: 0.78, h: 0.9 },
+      size: { w: 0.9, h: 0.93 },
       render: renderFiltros
     },
     informe: {
       title: 'Informe',
       icon: 'doc',
       breadcrumb: ['Desktop', 'Informe'],
-      size: { w: 0.8, h: 0.9 },
+      size: { w: 0.92, h: 0.94 },
       render: renderInforme
     },
     registro: {
       title: 'Registro',
       icon: 'terminal',
       breadcrumb: ['Desktop', 'Registro'],
-      size: { w: 0.7, h: 0.72 },
+      size: { w: 0.82, h: 0.86 },
       render: renderRegistro
     },
     exportar: {
       title: 'Exportar',
       icon: 'download',
       breadcrumb: ['Desktop', 'Exportar'],
-      size: { w: 0.66, h: 0.74 },
+      size: { w: 0.74, h: 0.85 },
       render: renderExportar
     },
     acerca: {
       title: 'Acerca de',
       icon: 'info',
       breadcrumb: ['Desktop', 'Acerca de'],
-      size: { w: 0.7, h: 0.82 },
+      size: { w: 0.72, h: 0.82 },
       render: renderAcerca
     },
     detalle: {
       title: 'Detalle',
       icon: 'doc',
       breadcrumb: ['Desktop', 'Análisis', 'Registro'],
-      size: { w: 0.66, h: 0.8 },
+      size: { w: 0.64, h: 0.9 },
       render: renderDetalle
     }
   };

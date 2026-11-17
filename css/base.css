@@ -3,6 +3,141 @@
    Habitación, monitor CRT 3D y sistema de diseño
    ============================================================ */
 
+
+/* ============ Tipografías locales (subconjuntos latin + latin-ext) ============ */
+@font-face {
+  font-family: 'Silkscreen';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/silkscreen-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Silkscreen';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/silkscreen-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Silkscreen';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/silkscreen-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Silkscreen';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/silkscreen-latin-ext-700-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* Pixelify Sans */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/pixelify-sans-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/pixelify-sans-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/pixelify-sans-latin-500-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/pixelify-sans-latin-ext-500-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/pixelify-sans-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/pixelify-sans-latin-ext-700-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* IBM Plex Mono */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-latin-ext-500-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-latin-600-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-latin-ext-600-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
 /* ---------- Reset ---------- */
 *,
 *::before,
@@ -77,7 +212,7 @@ body {
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(120% 90% at 18% 8%, #efe2c7 0%, #d9c9ad 38%, #bba98b 70%, #9d8a6d 100%);
+    radial-gradient(120% 95% at 22% 4%, #ddcaab 0%, #c4b091 34%, #9e896b 66%, #756046 100%);
 }
 
 /* pared: textura suave y sombra de esquina */
@@ -86,9 +221,10 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(90% 60% at 50% 100%, rgba(61, 40, 20, .28), transparent 70%),
-    radial-gradient(60% 40% at 8% 0%, rgba(255, 246, 224, .55), transparent 70%),
-    radial-gradient(40% 40% at 100% 100%, rgba(50, 33, 16, .3), transparent 70%);
+    radial-gradient(120% 100% at 50% 36%, transparent 40%, rgba(38, 24, 10, .18) 72%, rgba(26, 16, 6, .46) 100%),
+    radial-gradient(90% 60% at 50% 100%, rgba(49, 31, 14, .4), transparent 68%),
+    radial-gradient(60% 45% at 10% 0%, rgba(255, 246, 224, .32), transparent 68%),
+    radial-gradient(45% 45% at 100% 100%, rgba(42, 26, 11, .36), transparent 70%);
   pointer-events: none;
   z-index: 3;
 }
@@ -116,8 +252,8 @@ body {
   z-index: 1;
   filter: blur(26px);
   mix-blend-mode: screen;
-  opacity: .5;
-  background: linear-gradient(90deg, rgba(255, 239, 198, .9), rgba(255, 232, 180, .05));
+  opacity: .32;
+  background: linear-gradient(90deg, rgba(255, 239, 198, .62), rgba(255, 232, 180, .04));
   transform-origin: top left;
 }
 .lightshaft--a {
@@ -138,8 +274,8 @@ body {
   animation: shaft-drift 34s var(--ease-io) infinite alternate-reverse;
 }
 @keyframes shaft-drift {
-  from { transform: rotate(18deg) skewX(-6deg) translateX(-1.5vw); opacity: .32; }
-  to   { transform: rotate(19deg) skewX(-4deg) translateX(2vw); opacity: .55; }
+  from { transform: rotate(18deg) skewX(-6deg) translateX(-1.5vw); opacity: .22; }
+  to   { transform: rotate(19deg) skewX(-4deg) translateX(2vw); opacity: .4; }
 }
 
 /* motas de polvo flotando en la luz */
@@ -173,10 +309,11 @@ body {
   left: 0; right: 0; bottom: 0;
   height: 26vh;
   background:
-    linear-gradient(180deg, rgba(30, 18, 8, .5), transparent 45%),
-    repeating-linear-gradient(90deg, rgba(255, 220, 170, .05) 0 2px, transparent 2px 88px),
-    linear-gradient(180deg, #96603a 0%, #76482b 34%, #5a3620 100%);
-  box-shadow: inset 0 22px 40px rgba(30, 16, 6, .5);
+    linear-gradient(180deg, rgba(22, 12, 4, .7), rgba(22, 12, 4, .12) 22%, transparent 52%),
+    repeating-linear-gradient(90deg, rgba(24, 12, 4, .22) 0 2px, transparent 2px 104px),
+    repeating-linear-gradient(90deg, rgba(255, 220, 170, .045) 0 1px, transparent 1px 104px),
+    linear-gradient(180deg, #86522f 0%, #6a4126 26%, #4b2c19 72%, #3a2011 100%);
+  box-shadow: inset 0 26px 46px rgba(22, 12, 4, .55);
   z-index: 0;
 }
 .floor::before {
@@ -208,7 +345,7 @@ body {
   --sway-x: 0deg;
   --sway-y: 0deg;
   position: relative;
-  width: min(1140px, 90vw, calc((100dvh - 140px) * 1.18));
+  width: min(1140px, 90vw, calc(110dvh - 60px));
   transform-style: preserve-3d;
   transform:
     rotateX(calc(var(--tilt-x) + var(--sway-x)))
@@ -527,18 +664,18 @@ body {
   height: min(126px, 12.5vh);
   margin-bottom: 1.2vh;
   border-radius: 8px 8px 12px 12px;
-  background: linear-gradient(180deg, #ddd1b6, #c7b795 60%, #b2a17e);
+  background: linear-gradient(180deg, #cfc1a4, #b9a988 60%, #a2906f);
   box-shadow:
     0 2px 0 rgba(255, 255, 255, .6) inset,
     0 -3px 6px rgba(80, 58, 30, .25) inset,
     0 22px 30px -12px rgba(35, 20, 6, .55);
-  transform: rotateX(52deg) translateZ(-10px) scale(.94);
+  transform: rotateX(52deg) translateZ(-10px) scale(.9);
   transform-origin: bottom center;
   padding: 8px 10px 10px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  opacity: .96;
+  opacity: .9;
 }
 .keyboard::after {
   content: "";
@@ -557,7 +694,7 @@ body {
 .krow i {
   flex: 1;
   border-radius: 3px;
-  background: linear-gradient(180deg, #f0e7d2, #d6c8aa);
+  background: linear-gradient(180deg, #ece2ca, #d0c2a3);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .8) inset,
     0 -1px 1px rgba(0, 0, 0, .18) inset,
@@ -634,10 +771,9 @@ body {
 
 /* ---------- Responsive de la escena ---------- */
 @media (max-width: 900px) {
-  .monitor { width: min(780px, 92vw, calc((100dvh - 150px) * 1.18)); }
+  .monitor { width: min(780px, 92vw, calc(105dvh - 60px)); }
   .keyboard { width: 62vw; height: 9vh; }
   .mouse { width: 40px; height: 62px; }
-  .hint-3d { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

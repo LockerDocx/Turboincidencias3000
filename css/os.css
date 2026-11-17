@@ -19,7 +19,7 @@
   --bg-2: #100c07;
   --bg-3: #171107;
   --bg-4: #22180b;
-  --panel: rgba(23, 17, 8, .94);
+  --panel: var(--bg-3);
   --line: rgba(var(--phos-rgb), .2);
   --line-strong: rgba(var(--phos-rgb), .45);
   --sel-fg: #140d04;
@@ -31,7 +31,7 @@
   color: var(--phos);
   background: var(--bg);
   font-family: var(--font-mono);
-  font-size: clamp(10.5px, 1.34cqw, 14px);
+  font-size: clamp(11.4px, 1.5cqw, 14.5px);
   line-height: 1.45;
   overflow: hidden;
   text-shadow: 0 0 4px rgba(var(--phos-rgb), .22);
@@ -193,11 +193,15 @@
   transition: transform .22s var(--ease-out), filter .22s;
 }
 .rail__btn span { line-height: 1.1; text-align: center; }
-.rail__btn:hover,
+.rail__btn:hover {
+  color: var(--phos-hi);
+  background: rgba(var(--phos-rgb), .07);
+}
 .rail__btn:focus-visible {
   color: var(--phos-hi);
   background: rgba(var(--phos-rgb), .07);
-  outline: none;
+  outline: 1px solid var(--phos);
+  outline-offset: 2px;
 }
 .rail__btn:hover svg {
   transform: translateY(-2px) scale(1.06);
@@ -388,28 +392,30 @@
 .home__link span { border-bottom: 1px dotted var(--phos-faint); }
 
 .home__stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: .8em;
-  margin-top: .9em;
+  display: flex;
+  gap: .95em;
+  margin-top: .2em;
 }
-.home__stat {
-  border: 1px solid var(--line);
-  padding: .5em .65em;
-  border-radius: .25em;
-  background: rgba(var(--phos-rgb), .03);
+.home__stats > span {
+  display: flex;
+  flex-direction: column;
+  gap: .08em;
+  padding-left: .55em;
+  border-left: 1px solid var(--line-strong);
+  min-width: 4em;
 }
-.home__stat b {
-  display: block;
+.home__stats b {
   font-family: var(--font-pixel);
-  font-size: 1.25em;
+  font-size: 1.15em;
   color: var(--phos-hi);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
 }
-.home__stat span {
-  font-size: .72em;
-  letter-spacing: .12em;
+.home__stats i {
+  font-style: normal;
+  font-size: .6em;
+  letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--phos-faint);
 }
@@ -579,15 +585,16 @@
 /* ---------- Avisos / toasts ---------- */
 .toasts {
   position: absolute;
-  right: 1em;
-  bottom: 4.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 27%;
   z-index: 70;
   display: flex;
   flex-direction: column;
   gap: .45em;
-  align-items: flex-end;
+  align-items: center;
   pointer-events: none;
-  max-width: 20em;
+  max-width: 24em;
 }
 .toast {
   font-size: .8em;
@@ -707,5 +714,5 @@
 
 /* ---------- Escalado fino ---------- */
 @media (max-width: 1180px) {
-  .screen { font-size: clamp(9.5px, 1.42cqw, 12.5px); }
+  .screen { font-size: clamp(10.8px, 1.6cqw, 14px); }
 }

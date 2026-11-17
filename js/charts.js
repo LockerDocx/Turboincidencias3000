@@ -82,7 +82,7 @@ export function drawTimeline(canvas, points, opts = {}) {
     }
 
     const padL = 30;
-    const padR = 6;
+    const padR = 20;
     const padT = 10;
     const padB = 20;
     const plotW = w - padL - padR;
@@ -130,7 +130,7 @@ export function drawTimeline(canvas, points, opts = {}) {
       else ctx.lineTo(x, y);
     });
     ctx.strokeStyle = c.phos;
-    ctx.lineWidth = 1.4;
+    ctx.lineWidth = 1.6;
     ctx.shadowColor = rgba(c.rgb, 0.7);
     ctx.shadowBlur = 6;
     ctx.stroke();
@@ -149,13 +149,14 @@ export function drawTimeline(canvas, points, opts = {}) {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
     ctx.fillStyle = c.faint;
-    const labelEvery = Math.max(1, Math.ceil(points.length / Math.max(4, Math.floor(plotW / 46))));
+    const labelEvery = Math.max(1, Math.ceil(points.length / Math.max(4, Math.floor(plotW / 52))));
+    let lastLabelX = -Infinity;
     points.forEach((p, i) => {
       if (i % labelEvery !== 0 && i !== points.length - 1) return;
-      if (i === points.length - 1 && i % labelEvery !== 0 && points.length - 1 - (i - (i % labelEvery)) < 2) {
-        // evita solapar el último con el anterior
-      }
-      ctx.fillText(monthLabel(p.key), xOf(i), padT + plotH + 5);
+      const x = xOf(i);
+      if (x - lastLabelX < 40) return;
+      lastLabelX = x;
+      ctx.fillText(monthLabel(p.key), x, padT + plotH + 5);
     });
 
     // hover

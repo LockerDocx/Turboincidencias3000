@@ -991,7 +991,7 @@ let lastPointer = 0;
 let rafId = 0;
 
 function initTilt() {
-  if (reduceMotion || window.matchMedia('(max-width: 860px)').matches) return;
+  if (reduceMotion || window.matchMedia('(max-width: 900px)').matches) return;
   const updateTarget = (event) => {
     if (!state.settings.tilt) return;
     const rect = monitorEl.getBoundingClientRect();

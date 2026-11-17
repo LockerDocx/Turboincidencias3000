@@ -135,7 +135,7 @@ css/os.css                sistema operativo: raíl, home, barra de tareas
 css/windows.css           ventanas arrastrables
 css/widgets.css           tablas, filtros, KPIs, formularios
 css/views.css             facetas, informe, log, detalle, container queries
-css/responsive.css        móvil, tablet, impresión
+css/responsive.css        móvil, tablet (raíl horizontal), impresión
 js/app.js                 arranque, estado, atajos, exportación
 js/parser.js              parser XML tolerante + calidad del dato
 js/filters.js             facetas, presets y reglas
@@ -146,6 +146,7 @@ js/charts.js              timeline, donut y barras en canvas
 js/windows.js             gestor de ventanas
 js/icons.js               iconos de píxel en SVG
 js/sound.js               sonido sintetizado (WebAudio)
+assets/fonts/*.woff2      tipografías autoalojadas (latin + latin-ext)
 data/incidencies-demo.xml dataset de ejemplo
 tools/gen-demo.js         generador del dataset
 tools/check.js            comprobaciones estáticas
@@ -168,5 +169,6 @@ facetas, reglas, presets, exportación y un escritorio retro.
 ## Créditos
 
 - Estética inspirada en el template *Nostalgia Computer* de Framer.
-- Tipografías: Silkscreen, Pixelify Sans e IBM Plex Mono (Google Fonts).
+- Tipografías: Silkscreen, Pixelify Sans e IBM Plex Mono, autoalojadas en
+  `assets/fonts` (sin peticiones a Google Fonts).
 - Sin frameworks, sin dependencias de runtime, sin cookies.
