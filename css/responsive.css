@@ -2,6 +2,10 @@
    Turboincidencias 3000 — responsive.css
    ============================================================ */
 
+@media (max-width: 1200px) {
+  .hint-3d { display: none; }
+}
+
 @media (max-width: 1080px) {
   .home__title .l1 { font-size: clamp(2.1em, 5.4cqw, 4.6em); }
   .home__title .l2 { font-size: clamp(1.4em, 3.6cqw, 3.1em); }

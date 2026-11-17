@@ -714,5 +714,5 @@
 
 /* ---------- Escalado fino ---------- */
 @media (max-width: 1180px) {
-  .screen { font-size: clamp(10.8px, 1.6cqw, 14px); }
+  .screen { font-size: clamp(11.4px, 1.65cqw, 14px); }
 }
