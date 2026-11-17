@@ -22,7 +22,7 @@
 @media (max-width: 900px) {
   .room { background: #0a0805; }
   .room::before, .room::after { display: none; }
-  .lightshaft, .dust, .floor, .deskprops, .hint-3d { display: none; }
+  .lightpatch, .room__bars, .room__vignette, .lightshaft, .dust, .floor, .deskprops, .hint-3d { display: none; }
   .scene { padding: 0; perspective: none; }
   .monitor {
     width: 100vw;
