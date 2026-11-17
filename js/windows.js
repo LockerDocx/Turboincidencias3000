@@ -6,7 +6,7 @@ import { icon } from './icons.js';
 import { clamp, esc } from './util.js';
 
 const STORE_PREFIX = 'turbo3000.win.';
-const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+const isMobile = () => window.matchMedia('(max-width: 1400px)').matches;
 
 function loadGeom(id) {
   if (isMobile()) return null;
@@ -93,7 +93,7 @@ export function createWindowManager({ layer, workspace, onChange }) {
   function build(id, config) {
     const { width, height } = bounds();
     const defaultW = Math.min(width - 24, Math.round(width * (config.size?.w ?? 0.78)));
-    const defaultH = Math.min(height - 24, Math.round(height * (config.size?.h ?? 0.8)));
+    const defaultH = Math.min(height - 24, Math.round(height * (config.size?.h ?? 0.97)));
     const offset = (cascade % 4) * 14;
     cascade += 1;
 

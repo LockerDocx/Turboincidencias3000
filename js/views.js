@@ -126,18 +126,18 @@ export function createViews(app) {
 
       <div class="kpis">
         ${kpi({
-          label: 'Registros en el filtro',
+          label: 'Registros',
           value: num(total),
           foot: `de ${num(results.total)} · ${pct(total, results.total)} del XML`
         })}
         ${kpi({
-          label: 'Calidad del documento',
+          label: 'Calidad',
           value: dec(summary.coverage * 100, 1),
           unit: '%',
           foot: `${num(summary.valid)} válidas · ${num(summary.excludedByQuality)} descartadas`
         })}
         ${kpi({
-          label: 'Críticas + altas',
+          label: 'Críticas y altas',
           value: num(stats.kpi.criticas + stats.kpi.altas),
           foot: `${pct(stats.kpi.criticas + stats.kpi.altas, total || 1)} · ${num(stats.kpi.abiertas)} sin cerrar`
         })}
@@ -825,6 +825,7 @@ export function createViews(app) {
         <div class="sec__head"><h3>${icon('info')}Atajos</h3></div>
         <dl class="kv shortcuts">
           <dt><kbd>F</kbd></dt><dd>pantalla plana / inclinación 3D</dd>
+          <dt><kbd>C</kbd></dt><dd>modo claridad (sin scanlines)</dd>
           <dt><kbd>D</kbd></dt><dd>abrir Datos</dd>
           <dt><kbd>A</kbd></dt><dd>abrir Análisis</dd>
           <dt><kbd>S</kbd></dt><dd>abrir Filtros</dd>
@@ -954,6 +955,11 @@ export function createViews(app) {
               </div>`
             })}
             ${settingRow({
+              title: 'Modo claridad',
+              text: 'Sin scanlines ni halos · texto nítido',
+              control: `<label class="switch"><input type="checkbox" data-setting="clear" ${s.clear ? 'checked' : ''}><span class="track"></span></label>`
+            })}
+            ${settingRow({
               title: 'Líneas de barrido',
               text: 'Scanlines del CRT',
               control: `<label class="switch"><input type="checkbox" data-setting="scanlines" ${s.scanlines ? 'checked' : ''}><span class="track"></span></label>`
@@ -986,6 +992,7 @@ export function createViews(app) {
         <div class="sec__head"><h3>${icon('user')}Atajos de teclado</h3></div>
         <dl class="kv shortcuts">
           <dt><kbd>F</kbd></dt><dd>alternar pantalla plana / 3D</dd>
+          <dt><kbd>C</kbd></dt><dd>modo claridad (sin scanlines)</dd>
           <dt><kbd>A</kbd> <kbd>D</kbd> <kbd>S</kbd> <kbd>I</kbd></dt><dd>análisis · datos · filtros · informe</dd>
           <dt><kbd>Esc</kbd></dt><dd>cerrar la ventana activa</dd>
           <dt><kbd>ARRIBA</kbd> <kbd>ABAJO</kbd></dt><dd>registro anterior / siguiente</dd>

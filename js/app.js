@@ -44,6 +44,7 @@ const FILTERS_KEY = 'turbo3000.filters';
 const DEFAULT_SETTINGS = {
   theme: 'amber',
   scanlines: true,
+  clear: false,
   tilt: true,
   sound: false,
   boot: true
@@ -554,8 +555,7 @@ function updateChrome() {
   const ticker = $('#tickerText');
   if (ticker) {
     if (dataset) {
-      const off = summary.total - summary.valid;
-      ticker.innerHTML = `<b>${num(summary.total)}</b> incidencias · <b>${dec(summary.coverage * 100, 1)}%</b> válidas · ${num(off)} descartadas · filtro: <b>${esc(describeFilter(state.filter))}</b> → <b>${num(results?.rows.length || 0)}</b> registros`;
+      ticker.innerHTML = `<b>${num(summary.total)}</b> incidencias · <b>${dec(summary.coverage * 100, 1)}%</b> válidas · <b>${esc(describeFilter(state.filter))}</b> → <b>${num(results?.rows.length || 0)}</b>`;
     } else {
       ticker.innerHTML = 'Ningún documento cargado · pulsa <b>Cargar XML</b> o usa el dataset de demostración';
     }
@@ -584,8 +584,13 @@ function renderAll() {
 function applySettings() {
   const s = state.settings;
   screenEl.dataset.theme = s.theme;
-  screenEl.style.setProperty('--scan-opacity', s.scanlines ? '0.55' : '0');
+  screenEl.style.setProperty('--scan-opacity', s.scanlines ? '0.32' : '0');
+  screenEl.classList.toggle('is-clear', !!s.clear);
+  screenEl.closest('.monitor__glass')?.classList.toggle('is-clear', !!s.clear);
   monitorEl.style.transform = (!s.tilt || reduceMotion) ? 'none' : '';
+  $('#clearBtn')?.classList.toggle('is-on', !!s.clear);
+  $('#clearBtn')?.classList.toggle('is-off', !s.clear);
+  $('#clearBtn')?.setAttribute('title', s.clear ? 'Modo normal (C)' : 'Modo claridad: sin scanlines (C)');
   $('#soundBtn')?.classList.toggle('is-on', s.sound);
   $('#soundBtn')?.classList.toggle('is-off', !s.sound);
   $('#soundBtn')?.setAttribute('title', s.sound ? 'Silenciar' : 'Activar sonido');
@@ -996,16 +1001,24 @@ let lastPointer = 0;
 let rafId = 0;
 
 function initTilt() {
-  if (reduceMotion || window.matchMedia('(max-width: 900px)').matches) return;
+  if (reduceMotion || window.matchMedia('(max-width: 1400px)').matches) return;
+  // Mientras el puntero está sobre la pantalla, el monitor se queda quieto:
+  // así ningún botón se mueve bajo el cursor al hacer clic.
+  let frozen = false;
+  const screenEl = $('#screen');
+  if (screenEl) {
+    screenEl.addEventListener('pointerenter', () => { frozen = true; });
+    screenEl.addEventListener('pointerleave', () => { frozen = false; });
+  }
   const updateTarget = (event) => {
-    if (!state.settings.tilt) return;
+    if (!state.settings.tilt || frozen) return;
     const rect = monitorEl.getBoundingClientRect();
     const relX = clamp((event.clientX - rect.left) / rect.width, 0, 1) * 2 - 1;
     const relY = clamp((event.clientY - rect.top) / rect.height, 0, 1) * 2 - 1;
     pointerX = relX;
     pointerY = relY;
-    targetRY = relX * 2.1;
-    targetRX = -relY * 1.5;
+    targetRY = relX * 1.6;
+    targetRX = -relY * 1.1;
     lastPointer = performance.now();
     const glare = $('#glare');
     if (glare) {
@@ -1026,8 +1039,8 @@ function initTilt() {
 
   const loop = (now) => {
     const idle = now - lastPointer > 3500;
-    const swayX = idle ? Math.sin(now / 2600) * 0.35 : 0;
-    const swayY = idle ? Math.cos(now / 3400) * 0.45 : 0;
+    const swayX = idle && !frozen ? Math.sin(now / 2600) * 0.2 : 0;
+    const swayY = idle && !frozen ? Math.cos(now / 3400) * 0.25 : 0;
     const wantRX = state.settings.tilt ? targetRX + manualRX : 0;
     const wantRY = state.settings.tilt ? targetRY + manualRY : 0;
     currentRX += (wantRX + swayX - currentRX) * 0.07;
@@ -1035,8 +1048,8 @@ function initTilt() {
     if (state.settings.tilt) {
       monitorEl.style.setProperty('--tilt-x', `${currentRX.toFixed(3)}deg`);
       monitorEl.style.setProperty('--tilt-y', `${currentRY.toFixed(3)}deg`);
-      monitorEl.style.setProperty('--pan-x', (pointerX * 6).toFixed(2));
-      monitorEl.style.setProperty('--pan-y', (pointerY * 4).toFixed(2));
+      monitorEl.style.setProperty('--pan-x', (pointerX * 2.5).toFixed(2));
+      monitorEl.style.setProperty('--pan-y', (pointerY * 1.8).toFixed(2));
     } else {
       monitorEl.style.setProperty('--tilt-x', '0deg');
       monitorEl.style.setProperty('--tilt-y', '0deg');
@@ -1125,6 +1138,10 @@ function initGlobalEvents() {
 
   // Monitor
   $('#soundBtn')?.addEventListener('click', () => setSetting('sound', !state.settings.sound));
+  $('#clearBtn')?.addEventListener('click', () => {
+    setSetting('clear', !state.settings.clear);
+    toast(state.settings.clear ? 'MODO CLARIDAD · sin scanlines ni halos' : 'MODO CRT · scanlines y halos activados');
+  });
   $('#tiltBtn')?.addEventListener('click', () => setSetting('tilt', !state.settings.tilt));
   $('#powerBtn')?.addEventListener('click', togglePower);
   $('#powerBtnTray')?.addEventListener('click', togglePower);
@@ -1155,6 +1172,10 @@ function initGlobalEvents() {
 
     const key = event.key.toLowerCase();
     if (key === 'f') { event.preventDefault(); setSetting('tilt', !state.settings.tilt); }
+    else if (key === 'c') {
+      setSetting('clear', !state.settings.clear);
+      toast(state.settings.clear ? 'MODO CLARIDAD · sin scanlines ni halos' : 'MODO CRT · scanlines y halos activados');
+    }
     else if (key === 'a') openView('analisis');
     else if (key === 'd') openView('datos');
     else if (key === 's') openView('filtros');
@@ -1233,12 +1254,6 @@ async function boot() {
 
   await bootPromise;
 
-  // pequeña bienvenida
-  if (!state.settings.booted) {
-    setTimeout(() => {
-      toast(`Bienvenido. ${state.dataset ? 'El dataset de demo ya está cargado.' : 'Carga tu XML para empezar.'}`);
-    }, 700);
-  }
   updateChrome();
 }
 

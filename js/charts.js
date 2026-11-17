@@ -224,8 +224,8 @@ export function drawDonut(canvas, parts, opts = {}) {
 
     const cx = w / 2;
     const cy = h / 2;
-    const radius = Math.min(w, h) / 2 - 6;
-    const inner = radius * 0.58;
+    const radius = Math.max(4, Math.min(w, h) / 2 - 6);
+    const inner = Math.max(2, radius * 0.58);
     let angle = -Math.PI / 2;
 
     parts.forEach((p, i) => {
@@ -247,7 +247,7 @@ export function drawDonut(canvas, parts, opts = {}) {
 
     // aro interior
     ctx.beginPath();
-    ctx.arc(cx, cy, inner - 2, 0, Math.PI * 2);
+    ctx.arc(cx, cy, Math.max(1, inner - 2), 0, Math.PI * 2);
     ctx.strokeStyle = rgba(c.rgb, 0.22);
     ctx.lineWidth = 1;
     ctx.stroke();

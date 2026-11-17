@@ -24,6 +24,12 @@
 <body>
 
 <div class="room" id="room">
+  <div class="room__window" aria-hidden="true">
+    <span class="room__window-pane"></span>
+    <span class="room__window-muntin"></span>
+    <span class="room__window-curtain"></span>
+    <span class="room__window-sill"></span>
+  </div>
   <div class="lightpatch" aria-hidden="true"></div>
   <div class="room__bars" aria-hidden="true"></div>
   <div class="lightshaft lightshaft--a" aria-hidden="true"></div>
@@ -42,6 +48,7 @@
       <div class="monitor__shell" aria-hidden="true"></div>
       <div class="monitor__case">
         <div class="monitor__sticker">TURBO<b>SYSTEMS</b> · CRT-3000</div>
+        <div class="monitor__screws" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
         <div class="monitor__bezel">
           <div class="monitor__glass" id="glass">
@@ -86,6 +93,29 @@
                       tendencias. <span class="caret" aria-hidden="true"></span>
                     </p>
 
+                    <div class="home__start" aria-label="Accesos rápidos">
+                      <button class="home-card" data-open="analisis">
+                        <span class="home-card__ico" data-icon="chart"></span>
+                        <b>Análisis</b>
+                        <em>Calidad, KPIs y tendencias</em>
+                      </button>
+                      <button class="home-card" data-open="filtros">
+                        <span class="home-card__ico" data-icon="funnel"></span>
+                        <b>Filtros</b>
+                        <em>Busca y acota la lista</em>
+                      </button>
+                      <button class="home-card" data-open="datos">
+                        <span class="home-card__ico" data-icon="grid"></span>
+                        <b>Datos</b>
+                        <em>Tabla y detalle</em>
+                      </button>
+                      <button class="home-card" data-open="exportar">
+                        <span class="home-card__ico" data-icon="download"></span>
+                        <b>Exportar</b>
+                        <em>CSV, JSON e informe</em>
+                      </button>
+                    </div>
+
                     <div class="home__bottom">
                       <div>
                         <h1 class="home__title">
@@ -93,7 +123,7 @@
                           <span class="l2">INCIDENCIAS<s>3000</s></span>
                         </h1>
                         <p class="home__link">
-                          <span>Abre un icono de la izquierda para empezar</span>
+                          <span>Abre un icono del menú para empezar</span>
                         </p>
                       </div>
 
@@ -137,6 +167,7 @@
                   <div class="taskbar__tabs" id="taskbarTabs"></div>
 
                   <div class="taskbar__tray">
+                    <button class="tray__btn" id="clearBtn" title="Modo claridad (C)" aria-label="Modo claridad" data-icon="sun"></button>
                     <button class="tray__btn is-off" id="soundBtn" title="Activar sonido" aria-label="Activar sonido" data-icon="speaker"></button>
                     <button class="tray__btn is-on" id="tiltBtn" title="Inclinación 3D" aria-label="Inclinación 3D" data-icon="monitor"></button>
                     <button class="tray__btn" id="powerBtnTray" title="Apagar / encender" aria-label="Apagar o encender el monitor" data-icon="power"></button>
@@ -206,7 +237,7 @@
     <div class="cable cable--monitor" aria-hidden="true"></div>
   </div>
 
-  <p class="hint-3d">mueve el cursor · arrastra el monitor · <span id="hintFocus">F para pantalla plana</span></p>
+  <p class="hint-3d">arrastra el monitor · <span id="hintFocus">F = pantalla plana</span></p>
 </div>
 
 <input type="file" id="fileInput" accept=".xml,text/xml,application/xml" hidden>

@@ -6,6 +6,7 @@
 .win-layer {
   position: absolute;
   inset: 0;
+  min-width: 0;
   z-index: 10;
   pointer-events: none;
 }
@@ -63,8 +64,8 @@
   display: flex;
   align-items: center;
   gap: .5em;
-  height: 2.05em;
-  padding: 0 .35em 0 .7em;
+  height: 2.5em;
+  padding: 0 .4em 0 .75em;
   flex: none;
   cursor: grab;
   background:
@@ -112,8 +113,8 @@
   flex: none;
 }
 .win__ctrls button {
-  width: 1.5em;
-  height: 1.5em;
+  width: 2.05em;
+  height: 2.05em;
   border: 1px solid rgba(0, 0, 0, .55);
   background: linear-gradient(180deg, rgba(255, 255, 255, .35), rgba(0, 0, 0, .12));
   color: inherit;
@@ -125,7 +126,7 @@
 }
 .win__ctrls button:hover { background: rgba(255, 255, 255, .5); }
 .win__ctrls button:active { transform: translateY(1px); }
-.win__ctrls svg { width: .82em; height: .82em; }
+.win__ctrls svg { width: .92em; height: .92em; }
 .win:not(.is-focused) .win__ctrls button {
   border-color: var(--line);
   background: rgba(var(--phos-rgb), .06);
@@ -139,7 +140,7 @@
   align-items: center;
   gap: .45em;
   padding: .32em .8em;
-  font-size: .72em;
+  font-size: .78em;
   letter-spacing: .06em;
   color: var(--phos-dim);
   border-bottom: 1px solid var(--line);
@@ -179,7 +180,7 @@
   gap: 1em;
   padding: .28em .8em;
   border-top: 1px solid var(--line);
-  font-size: .7em;
+  font-size: .76em;
   letter-spacing: .08em;
   color: var(--phos-faint);
   background: var(--bg-2);

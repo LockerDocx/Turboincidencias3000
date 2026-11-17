@@ -15,7 +15,7 @@
   background: var(--bg-4);
   border: 1px solid var(--line-strong);
   color: var(--phos-hi);
-  font-size: .66em;
+  font-size: .74em;
   line-height: 1.35;
   white-space: nowrap;
   box-shadow: 0 .3em .9em rgba(0, 0, 0, .6), 0 0 .8em rgba(var(--phos-rgb), .12);
@@ -34,7 +34,7 @@
   border-left: 2px solid var(--line-strong);
   background: rgba(var(--phos-rgb), .04);
   color: var(--phos-dim);
-  font-size: .76em;
+  font-size: .82em;
   line-height: 1.7;
   list-style: none;
 }
@@ -91,7 +91,7 @@ code.tag {
   justify-content: space-between;
   gap: .4em;
   margin-bottom: .35em;
-  font-size: .68em;
+  font-size: .76em;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--phos-dim);
@@ -114,7 +114,7 @@ code.tag {
   border: 1px solid var(--line);
   background: transparent;
   color: var(--phos-dim);
-  font-size: .68em;
+  font-size: .76em;
   padding: .18em .45em;
   border-radius: .1em;
   cursor: pointer;
@@ -161,7 +161,7 @@ code.tag {
   gap: .5em;
   border-top: 1px dotted rgba(var(--phos-rgb), .14);
   padding-top: .3em;
-  font-size: .75em;
+  font-size: .81em;
 }
 .saved-list li:first-child { border-top: 0; padding-top: 0; }
 .saved-list li .btn { flex: 1; justify-content: flex-start; }
@@ -174,7 +174,7 @@ code.tag {
   max-height: 24em;
   overflow: auto;
   padding: .5em .55em;
-  font-size: .72em;
+  font-size: .78em;
   line-height: 1.65;
 }
 .logrow {
@@ -226,7 +226,7 @@ code.tag {
 .about-hero h2 span { color: var(--phos-hi); font-family: var(--font-display); }
 .about-hero p {
   margin: 0 0 .7em;
-  font-size: .82em;
+  font-size: .86em;
   line-height: 1.7;
   color: var(--phos-mid);
   max-width: 46em;
@@ -311,7 +311,7 @@ kbd {
   .grid2, .grid3 { grid-template-columns: 1fr; }
   .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .facet-groups { grid-template-columns: 1fr; }
-  .btable { font-size: .82em; }
+  .btable { font-size: .86em; }
   .chartcard canvas { height: 9em; }
 }
 @container (max-width: 400px) {

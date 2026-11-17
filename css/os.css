@@ -10,9 +10,9 @@
 .screen {
   --phos: #f0a63c;
   --phos-hi: #ffd08a;
-  --phos-mid: #c98a35;
-  --phos-dim: #8d6329;
-  --phos-faint: #5d4419;
+  --phos-mid: #e2a24a;
+  --phos-dim: #b07c33;
+  --phos-faint: #86612a;
   --phos-rgb: 240, 166, 60;
 
   --bg: #0a0805;
@@ -31,19 +31,19 @@
   color: var(--phos);
   background: var(--bg);
   font-family: var(--font-mono);
-  font-size: clamp(11.4px, 1.5cqw, 14.5px);
-  line-height: 1.45;
+  font-size: clamp(15px, 1.6cqw, 17px);
+  line-height: 1.52;
   overflow: hidden;
-  text-shadow: 0 0 4px rgba(var(--phos-rgb), .22);
+  text-shadow: 0 0 3px rgba(var(--phos-rgb), .1);
   transition: opacity .35s, filter .35s;
   user-select: none;
 }
 .screen[data-theme="green"] {
   --phos: #79ef9a;
   --phos-hi: #d6ffe1;
-  --phos-mid: #4fbe72;
-  --phos-dim: #359457;
-  --phos-faint: #1f5c37;
+  --phos-mid: #6fd894;
+  --phos-dim: #42ae6a;
+  --phos-faint: #2c7c4d;
   --phos-rgb: 121, 239, 154;
   --bg: #040906;
   --bg-2: #06100a;
@@ -53,9 +53,9 @@
 .screen[data-theme="ice"] {
   --phos: #86d8ff;
   --phos-hi: #e2f6ff;
-  --phos-mid: #4fa8d8;
-  --phos-dim: #347ba3;
-  --phos-faint: #1e4a63;
+  --phos-mid: #72c8f2;
+  --phos-dim: #4295c1;
+  --phos-faint: #2a6a8f;
   --phos-rgb: 134, 216, 255;
   --bg: #04080b;
   --bg-2: #060d12;
@@ -65,9 +65,9 @@
 .screen[data-theme="bone"] {
   --phos: #efe6d2;
   --phos-hi: #fffdf6;
-  --phos-mid: #c3b89f;
-  --phos-dim: #8f856e;
-  --phos-faint: #5b5343;
+  --phos-mid: #d8cfb9;
+  --phos-dim: #a99e86;
+  --phos-faint: #7b7160;
   --phos-rgb: 239, 230, 210;
   --bg: #0a0907;
   --bg-2: #100e0b;
@@ -91,35 +91,35 @@
 .crt--scan {
   background: repeating-linear-gradient(
     to bottom,
-    rgba(0, 0, 0, .32) 0 1px,
-    rgba(0, 0, 0, 0) 1px 3px
+    rgba(0, 0, 0, .26) 0 1px,
+    rgba(0, 0, 0, 0) 1px 4px
   );
-  opacity: var(--scan-opacity, .4);
+  opacity: var(--scan-opacity, .3);
   mix-blend-mode: multiply;
 }
 .crt--grille {
   background: repeating-linear-gradient(
     to right,
-    rgba(var(--phos-rgb), .045) 0 1px,
-    transparent 1px 3px
+    rgba(var(--phos-rgb), .03) 0 1px,
+    transparent 1px 4px
   );
   mix-blend-mode: screen;
-  opacity: .7;
+  opacity: .35;
 }
 .crt--vignette {
   background:
-    radial-gradient(130% 120% at 50% 45%, transparent 52%, rgba(0, 0, 0, .45) 88%, rgba(0, 0, 0, .75) 100%),
+    radial-gradient(135% 125% at 50% 45%, transparent 62%, rgba(0, 0, 0, .3) 90%, rgba(0, 0, 0, .55) 100%),
     linear-gradient(180deg, rgba(255, 240, 210, .03), transparent 22%);
 }
 .crt--glare {
   background: radial-gradient(circle at var(--gx, 30%) var(--gy, 20%), rgba(255, 255, 255, .13), rgba(255, 255, 255, .04) 22%, transparent 46%);
   mix-blend-mode: screen;
-  opacity: .8;
+  opacity: .5;
 }
 .crt--flicker {
   background: rgba(var(--phos-rgb), .035);
   animation: flicker 5s steps(2, end) infinite;
-  opacity: .6;
+  opacity: .25;
 }
 @keyframes flicker {
   0%, 100% { opacity: .45; }
@@ -135,7 +135,7 @@
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: 12.2em 1fr;
+  grid-template-columns: 12.8em minmax(0, 1fr);
   grid-template-rows: 1fr auto auto;
   z-index: 2;
 }
@@ -175,20 +175,21 @@
   flex-direction: column;
   align-items: center;
   gap: .42em;
-  padding: .35em .2em .4em;
+  padding: .45em .2em .5em;
+  min-height: 4.1em;
   border: 0;
   border-radius: .35em;
   background: transparent;
   color: var(--phos-dim);
   font-family: var(--font-mono);
-  font-size: .92em;
+  font-size: .95em;
   letter-spacing: .01em;
   position: relative;
   transition: color .18s, background .18s, transform .18s var(--ease-out);
 }
 .rail__btn svg {
-  width: 2.4em;
-  height: 2.4em;
+  width: 2.55em;
+  height: 2.55em;
   filter: drop-shadow(0 0 5px rgba(var(--phos-rgb), .22));
   transition: transform .22s var(--ease-out), filter .22s;
 }
@@ -231,7 +232,7 @@
 
 .rail__foot {
   margin-top: auto;
-  font-size: .78em;
+  font-size: .84em;
   letter-spacing: .16em;
   color: var(--phos-faint);
   text-transform: uppercase;
@@ -264,6 +265,7 @@
 /* ---------- Área de trabajo ---------- */
 .workspace {
   grid-column: 2;
+  min-width: 0;
   grid-row: 1;
   position: relative;
   overflow: hidden;
@@ -346,8 +348,8 @@
   color: var(--phos);
   text-shadow:
     0 0 1px rgba(var(--phos-rgb), .9),
-    0 0 14px rgba(var(--phos-rgb), .38),
-    0 0 40px rgba(var(--phos-rgb), .18);
+    0 0 10px rgba(var(--phos-rgb), .32),
+    0 0 30px rgba(var(--phos-rgb), .14);
   display: flex;
   flex-direction: column;
   user-select: none;
@@ -414,7 +416,7 @@
 }
 .home__stats i {
   font-style: normal;
-  font-size: .6em;
+  font-size: .68em;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--phos-faint);
@@ -427,8 +429,8 @@
   display: flex;
   align-items: center;
   gap: .8em;
-  padding: .38em 1.1em;
-  font-size: .78em;
+  padding: .5em 1.1em;
+  font-size: .9em;
   color: var(--phos-dim);
   border-top: 1px solid var(--line);
   background: var(--bg-2);
@@ -470,7 +472,7 @@
   display: flex;
   align-items: center;
   gap: .9em;
-  height: 3.1em;
+  height: 3.4em;
   padding: 0 .9em;
   background:
     linear-gradient(180deg, rgba(var(--phos-rgb), .09), rgba(var(--phos-rgb), .02) 40%, transparent),
@@ -491,12 +493,12 @@
   border: 0;
   background: transparent;
   color: var(--phos-faint);
-  padding: .15em;
+  padding: .3em;
   display: grid;
   place-items: center;
   transition: color .18s, transform .18s;
 }
-.taskbar__apps button svg { width: 1.35em; height: 1.35em; }
+.taskbar__apps button svg { width: 1.45em; height: 1.45em; }
 .taskbar__apps button:hover { color: var(--phos-hi); transform: translateY(-1px); }
 
 .taskbar__tabs {
@@ -587,7 +589,8 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 27%;
+  top: auto;
+  bottom: 6.4em;
   z-index: 70;
   display: flex;
   flex-direction: column;
@@ -707,7 +710,7 @@
   display: block;
   margin-top: .8em;
   font-family: var(--font-mono);
-  font-size: .72em;
+  font-size: .78em;
   letter-spacing: .14em;
   color: #4d3915;
 }
@@ -731,7 +734,7 @@
   margin: 0;
   text-align: center;
   font-family: var(--font-pixel);
-  font-size: .6em;
+  font-size: .68em;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--phos-dim);
@@ -756,7 +759,7 @@
   border: 1px solid var(--phos);
   background: rgba(4, 3, 1, .72);
   font-family: var(--font-pixel);
-  font-size: .74em;
+  font-size: .8em;
   letter-spacing: .24em;
   text-transform: uppercase;
   color: var(--phos-hi);
@@ -767,6 +770,67 @@
 @keyframes turbo-badge-blink { 0%, 70% { opacity: 1; } 71%, 100% { opacity: .55; } }
 
 /* ---------- Escalado fino ---------- */
-@media (max-width: 1180px) {
-  .screen { font-size: clamp(11.4px, 1.65cqw, 14px); }
+@media (max-width: 1400px) {
+  .screen { font-size: clamp(15px, 1.6cqw, 17px); }
 }
+
+/* ---------- Accesos rápidos del escritorio ---------- */
+.home__start {
+  display: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .6em;
+  max-width: 60em;
+}
+.home-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: .7em;
+  row-gap: .1em;
+  align-items: center;
+  padding: .68em .8em;
+  text-align: left;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(160deg, rgba(var(--phos-rgb), .07), transparent 70%),
+    var(--bg-2);
+  color: var(--phos);
+  border-radius: .17em;
+  transition: border-color .16s, background .16s, transform .16s;
+}
+.home-card:hover,
+.home-card:focus-visible {
+  border-color: var(--phos);
+  background: rgba(var(--phos-rgb), .1);
+  transform: translateY(-1px);
+}
+.home-card__ico {
+  grid-row: 1 / 3;
+  display: grid;
+  place-items: center;
+  color: var(--phos);
+}
+.home-card__ico svg { width: 2.1em; height: 2.1em; }
+.home-card b {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.1;
+  color: var(--phos-hi);
+}
+.home-card em {
+  font-style: normal;
+  font-size: .76em;
+  line-height: 1.35;
+  color: var(--phos-dim);
+}
+
+/* ---------- Modo claridad ---------- */
+.screen.is-clear { text-shadow: none; }
+.screen.is-clear .home__title { text-shadow: none; }
+.monitor__glass.is-clear .crt--scan,
+.monitor__glass.is-clear .crt--grille,
+.monitor__glass.is-clear .crt--glare,
+.monitor__glass.is-clear .crt--flicker { opacity: 0; }
+.monitor__glass.is-clear .crt--vignette { opacity: .35; }
+.monitor__glass.is-clear::after { opacity: .18; }

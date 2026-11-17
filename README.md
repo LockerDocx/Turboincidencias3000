@@ -47,12 +47,12 @@ no se envía a ningún sitio**.
 - **Exportación** CSV, JSON, TXT y HTML.
 - **Escritorio retro**: ventanas arrastrables, minimizar/maximizar, barra de
   tareas, reloj, sonido sintetizado con WebAudio, secuencia de arranque del BIOS,
-  temas de fósforo (ámbar, verde, azul, hueso), scanlines regulables y modo
-  pantalla plana.
+  temas de fósforo (ámbar, verde, azul, hueso), scanlines regulables, modo
+  claridad (texto nítido, sin halos) y pantalla plana.
 - **3D y sensación de profundidad**: monitor con inclinación según el cursor y
-  arrastrable (vuelve solo), paralaje de pared, polvo y mesa, reflejo del cristal
-  que sigue al puntero, sombras, polvo en el haz de luz, teclado con teclas que
-  se iluminan y apagado/encendido del tubo.
+  arrastrable (vuelve solo y se queda quieto al interactuar), paralaje de pared,
+  ventana al anochecer, polvo y mesa, reflejo del cristal, sombras, teclado con
+  teclas que se iluminan y apagado/encendido del tubo.
 - **Secretos del chasis**: degauss al pulsar la placa o hacer doble clic en el
   marco, LED que cambia el fósforo, salvapantallas de estrellas tras un minuto,
   código Konami y clics en el teclado y el ratón de la mesa.
@@ -104,6 +104,7 @@ hora.
 | `A` / `D` / `S` / `I` | Análisis · Datos · Filtros · Informe |
 | `R` / `E` | Registro · Exportar |
 | `F` | Alternar inclinación 3D / pantalla plana |
+| `C` | Modo claridad (sin scanlines ni halos) |
 | `Esc` | Cerrar la ventana activa (o saltar el arranque) |
 | `↑` / `↓` | Registro anterior / siguiente en el detalle |
 
@@ -139,7 +140,7 @@ css/os.css                sistema operativo: raíl, home, barra de tareas
 css/windows.css           ventanas arrastrables
 css/widgets.css           tablas, filtros, KPIs, formularios
 css/views.css             facetas, informe, log, detalle, container queries
-css/responsive.css        móvil, tablet (raíl horizontal), impresión
+css/responsive.css        móvil/tablet a pantalla completa, impresión
 js/app.js                 arranque, estado, atajos, exportación
 js/parser.js              parser XML tolerante + calidad del dato
 js/filters.js             facetas, presets y reglas

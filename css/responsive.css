@@ -2,11 +2,11 @@
    Turboincidencias 3000 — responsive.css
    ============================================================ */
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .hint-3d { display: none; }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1400px) {
   .home__title .l1 { font-size: clamp(2.1em, 5.4cqw, 4.6em); }
   .home__title .l2 { font-size: clamp(1.4em, 3.6cqw, 3.1em); }
   .rail { grid-template-columns: none; }
@@ -14,15 +14,15 @@
   .rail__btn { font-size: .84em; }
   .rail__btn svg { width: 2.1em; height: 2.1em; }
   .win { min-width: 0; }
-  .btable { font-size: .76em; }
+  .btable { font-size: .82em; }
   .sec__head .sub { display: none; }
 }
 
 /* ---------- Tableta / móvil: pantalla a pantalla completa ---------- */
-@media (max-width: 900px) {
+@media (max-width: 1400px) {
   .room { background: #0a0805; }
   .room::before, .room::after { display: none; }
-  .lightpatch, .room__bars, .room__vignette, .lightshaft, .dust, .floor, .deskprops, .hint-3d { display: none; }
+  .room__window, .lightpatch, .room__bars, .room__vignette, .lightshaft, .dust, .floor, .deskprops, .hint-3d { display: none; }
   .scene { padding: 0; perspective: none; }
   .monitor {
     width: 100vw;
@@ -33,7 +33,7 @@
   }
   .monitor__shadow, .monitor__spill, .monitor__wallshadow, .monitor__bloom, .monitor__shell,
   .monitor__neck, .monitor__base,
-  .monitor__sticker, .monitor__knobs, .monitor__vents, .monitor__chin,
+  .monitor__sticker, .monitor__screws, .monitor__knobs, .monitor__vents, .monitor__chin,
   .monitor__case::before, .monitor__case::after { display: none; }
   .monitor__case {
     height: 100%;
@@ -55,8 +55,8 @@
     border-radius: 4px;
   }
   .monitor__glass::after { display: none; }
-  .screen { font-size: 12.5px; }
-  .os { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto auto; }
+  .screen { font-size: 15px; }
+  .os { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto auto; }
   .rail {
     grid-column: 1;
     grid-row: 1;
@@ -66,8 +66,7 @@
     padding: .3em .4em;
     border-right: 0;
     border-bottom: 1px solid var(--line);
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
     scrollbar-width: none;
   }
   .rail::-webkit-scrollbar { display: none; }
@@ -75,18 +74,19 @@
   .rail__grid {
     display: flex;
     flex-direction: row;
-    flex: 1 0 auto;
-    gap: .1em;
+    flex: 1 1 auto;
+    gap: .2em;
     align-content: normal;
   }
   .rail__btn {
-    flex: 0 0 auto;
-    min-width: 3.9em;
+    flex: 1 1 0;
+    min-width: 0;
     gap: .16em;
-    padding: .28em .1em .24em;
-    font-size: .78em;
+    padding: .34em .2em .3em;
+    font-size: .88em;
+    min-height: 58px;
   }
-  .rail__btn svg { width: 1.9em; height: 1.9em; }
+  .rail__btn svg { width: 1.8em; height: 1.8em; }
   .rail__sep, .rail__foot, .rail__badge { display: none; }
   .workspace { grid-column: 1; grid-row: 2; }
   .ticker { grid-column: 1; grid-row: 3; }
@@ -95,35 +95,118 @@
   .taskbar__apps button { display: none; }
   .taskbar__apps button:first-child { display: inline-flex; }
   .taskbar__tabs { flex: 1; }
-  .home { padding: 1.4em 1.2em; }
-  .home__intro { justify-self: stretch; text-align: left; max-width: none; font-size: .78em; }
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    padding: 3.6em 1.5em 1.8em;
+  }
+  .home__meta {
+    position: absolute;
+    left: 1.5em;
+    right: 1.5em;
+    top: 1.3em;
+  }
+  .home__intro { width: 100%; text-align: left; max-width: 60em; font-size: .88em; }
+  .home__start { display: grid; order: 3; width: 100%; }
+  .home__bottom { order: 2; }
+  .home__intro { order: 1; }
+  .home__bottom { width: 100%; max-width: 60em; flex-direction: column; align-items: flex-start; gap: 1.1em; }
+  .home__aside { align-items: flex-start; margin-left: 0; width: 100%; }
+  .home__cta { max-width: none; }
   .home__title .l1 { font-size: clamp(2.1em, 10vw, 3.8em); }
   .home__title .l2 { font-size: clamp(1.45em, 6.9vw, 2.5em); }
   .home__stats { gap: .5em; }
   .home__stats > span { padding-left: .4em; min-width: 3.4em; }
   .kpi__value { font-size: 1.4em; }
   .win__crumbs { display: none; }
+  .win {
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    box-shadow: none;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .win__grip { display: none; }
+  .win__ctrls [data-act="max"] { display: none; }
   .filterbar { padding: .5em; }
   .chartcard canvas { height: 8.4em; }
-  .toasts { top: 34%; left: .7em; right: .7em; transform: none; align-items: stretch; }
+  .toasts { top: auto; bottom: 6.6em; left: .7em; right: .7em; transform: none; align-items: stretch; }
   .toast { max-width: none; }
+
+  /* Objetivos táctiles: nada por debajo de ~40 px */
+  .btn, .input, .select { min-height: 40px; }
+  .btn svg { width: 1.35em; height: 1.35em; }
+  .win__bar { height: 46px; padding: 0 .5em 0 .8em; }
+  .win__ctrls { gap: 5px; }
+  .win__ctrls button { width: 34px; height: 34px; }
+  .win__ctrls svg { width: 1em; height: 1em; }
+  .rail { padding: .45em .5em; }
+  .rail__grid { gap: .1em; }
+  .ticker { font-size: .86em; padding: .5em .8em; }
+  .ticker__right { display: none; }
+  .taskbar { height: 54px; padding: 0 .6em; }
+  .taskbar__tab { min-height: 38px; }
+  .taskbar__apps button { min-width: 40px; min-height: 40px; }
+  .tray__btn { width: 38px; height: 38px; }
+  #tiltBtn { display: none; }
+  .preset { min-height: 40px; }
+  .chip { min-height: 38px; }
+  .chip button { width: 28px; height: 28px; }
+  .switch { min-height: 42px; }
+  .facet-chip { min-height: 36px; }
+  .win__grip { width: 1.4em; height: 1.4em; }
 }
 
 @media (max-width: 560px) {
-  .screen { font-size: 12px; }
-  .home__meta { font-size: .68em; letter-spacing: .1em; }
+  .screen { font-size: 14px; }
+  .rail { padding: .35em .4em; }
+  .rail__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .2em;
+  }
+  .rail__btn {
+    flex-direction: row;
+    justify-content: center;
+    gap: .38em;
+    min-height: 46px;
+    padding: .25em .3em;
+    font-size: .86em;
+  }
+  .rail__btn svg { width: 1.5em; height: 1.5em; }
+  .workspace { min-height: 0; }
+  .home__start { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5em; }
+  .home-card { padding: .55em .6em; }
+  .home-card__ico svg { width: 1.8em; height: 1.8em; }
+  .home-card em { font-size: .72em; }
+  .search { flex: 1 1 100%; }
+  .filterbar__count { width: 100%; margin-left: 0; white-space: normal; }
+  .win__status [data-status-right] { display: none; }
+  .home__meta { font-size: .82em; letter-spacing: .08em; }
   .home__meta span:last-child { display: none; }
-  .home__intro { font-size: .74em; }
+  .home__intro { font-size: .88em; }
   .home__stats { display: flex; gap: .5em; }
   .home__stats b { font-size: 1em; }
-  .home__stats i { font-size: .55em; letter-spacing: .04em; }
+  .home__stats i { font-size: .74em; letter-spacing: .04em; }
   .taskbar { gap: .4em; padding: 0 .45em; height: 3.3em; }
-  .taskbar__apps { gap: .1em; padding-right: .35em; }
+  .taskbar__apps { display: none; }
   .taskbar__apps button { padding: .1em; }
   .taskbar__apps button svg { width: 1.2em; height: 1.2em; }
-  .taskbar__tab { font-size: .72em; padding: 0 .45em; }
-  .tray__btn { width: 1.7em; height: 1.7em; }
-  .tray__clock { min-width: 3.3em; font-size: .76em; padding-left: .35em; }
+  .taskbar__tab { font-size: .84em; padding: 0 .45em; }
+  .taskbar__tab span { display: none; }
+  .taskbar__tab { width: 42px; justify-content: center; padding: 0; }
+  .taskbar__tab svg { width: 1.3em; height: 1.3em; }
+  .tray__btn { width: 40px; height: 40px; }
+  .tray__clock { min-width: 3.3em; font-size: .82em; padding-left: .35em; }
   .kpis { gap: .4em; }
   .kpi { padding: .4em .5em; }
   .kpi__value { font-size: 1.25em; }
@@ -132,6 +215,7 @@
   .rule { grid-template-columns: 1fr 1fr; }
   .rule__del { grid-column: 2; justify-self: end; }
   .preset-grid { grid-template-columns: 1fr 1fr; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- Escritorio muy alto o muy bajo ---------- */
@@ -139,7 +223,7 @@
   .monitor { width: min(1040px, 88vw, calc(108dvh - 60px)); }
   .keyboard { height: 10vh; }
   .home { padding: 1.2em 1.6em 1em; }
-  .home__intro { font-size: .8em; }
+  .home__intro { font-size: .88em; }
 }
 
 /* ---------- Modo "quiet" / accesibilidad ---------- */
@@ -160,4 +244,9 @@
   .win { position: static !important; width: 100% !important; height: auto !important; border: 0; }
   .win__bar { background: #eee !important; color: #000 !important; }
   .win__body { overflow: visible; }
+}
+
+/* En la escena del monitor el ticker es más estrecho: sin etiqueta de fecha */
+@media (min-width: 1401px) and (max-width: 1560px) {
+  .ticker__right { display: none; }
 }
