@@ -1,0 +1,127 @@
+/* ============================================================
+   Turboincidencias 3000 — responsive.css
+   ============================================================ */
+
+@media (max-width: 1080px) {
+  .home__title .l1 { font-size: clamp(2.1em, 5.4cqw, 4.6em); }
+  .home__title .l2 { font-size: clamp(1.4em, 3.6cqw, 3.1em); }
+  .rail { grid-template-columns: none; }
+  .rail__grid { gap: .8em .3em; }
+  .rail__btn { font-size: .84em; }
+  .rail__btn svg { width: 2.1em; height: 2.1em; }
+  .win { min-width: 0; }
+  .btable { font-size: .76em; }
+  .sec__head .sub { display: none; }
+}
+
+/* ---------- Tableta / móvil: pantalla a pantalla completa ---------- */
+@media (max-width: 860px) {
+  .room { background: #0a0805; }
+  .room::before, .room::after { display: none; }
+  .lightshaft, .dust, .floor, .deskprops, .hint-3d { display: none; }
+  .scene { padding: 0; perspective: none; }
+  .monitor {
+    width: 100vw;
+    width: 100dvw;
+    height: 100dvh;
+    transform: none !important;
+    transition: none;
+  }
+  .monitor__shadow, .monitor__spill, .monitor__neck, .monitor__base,
+  .monitor__sticker, .monitor__knobs, .monitor__vents, .monitor__chin,
+  .monitor__case::before, .monitor__case::after { display: none; }
+  .monitor__case {
+    height: 100%;
+    padding: 0;
+    border-radius: 0;
+    background: #000;
+    box-shadow: none;
+  }
+  .monitor__bezel {
+    height: 100%;
+    padding: 6px;
+    border-radius: 0;
+    background: #111;
+    box-shadow: none;
+  }
+  .monitor__glass {
+    aspect-ratio: auto;
+    height: 100%;
+    border-radius: 4px;
+  }
+  .monitor__glass::after { display: none; }
+  .screen { font-size: 13px; }
+  .os { grid-template-columns: 1fr; grid-template-rows: 1fr auto auto; }
+  .rail { display: none; }
+  .workspace { grid-column: 1; grid-row: 1; }
+  .ticker { grid-column: 1; grid-row: 2; }
+  .taskbar { grid-column: 1; grid-row: 3; }
+  .taskbar__apps { display: flex; flex: none; max-width: 46vw; overflow-x: auto; scrollbar-width: none; }
+  .taskbar__apps::-webkit-scrollbar { display: none; }
+  .taskbar__tabs { flex: 1; }
+  .home { padding: 1.4em 1.2em; }
+  .home__intro { font-size: .8em; max-width: 20em; }
+  .home__title .l1 { font-size: clamp(2.4em, 12.5vw, 4.4em); }
+  .home__title .l2 { font-size: clamp(1.7em, 8.6vw, 3em); }
+  .home__stats { gap: .4em; }
+  .kpi__value { font-size: 1.4em; }
+  .win__crumbs { display: none; }
+  .filterbar { padding: .5em; }
+  .chartcard canvas { height: 8.4em; }
+  .toasts { bottom: 3.6em; right: .6em; left: .6em; align-items: stretch; }
+  .toast { max-width: none; }
+}
+
+@media (max-width: 560px) {
+  .screen { font-size: 12px; }
+  .home__meta { font-size: .68em; letter-spacing: .1em; }
+  .home__meta span:last-child { display: none; }
+  .home__intro { font-size: .74em; }
+  .home__stats { grid-template-columns: repeat(3, 1fr); }
+  .home__stat { padding: .35em .4em; }
+  .home__stat b { font-size: 1em; }
+  .home__stat span { font-size: .6em; letter-spacing: .06em; }
+  .taskbar { gap: .4em; padding: 0 .45em; height: 3.3em; }
+  .taskbar__apps { gap: .1em; padding-right: .35em; }
+  .taskbar__apps button { padding: .1em; }
+  .taskbar__apps button svg { width: 1.2em; height: 1.2em; }
+  .taskbar__tab { font-size: .72em; padding: 0 .45em; }
+  .tray__btn { width: 1.7em; height: 1.7em; }
+  .tray__clock { min-width: 3.3em; font-size: .76em; padding-left: .35em; }
+  .kpis { gap: .4em; }
+  .kpi { padding: .4em .5em; }
+  .kpi__value { font-size: 1.25em; }
+  .win__body { padding: .75em .7em 1.2em; }
+  .grid2 { gap: .8em; }
+  .rule { grid-template-columns: 1fr 1fr; }
+  .rule__del { grid-column: 2; justify-self: end; }
+  .preset-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Escritorio muy alto o muy bajo ---------- */
+@media (max-height: 720px) and (min-width: 861px) {
+  .monitor { width: min(1040px, 86vw, calc((100dvh - 120px) * 1.18)); }
+  .keyboard { height: 10vh; }
+  .home { padding: 1.2em 1.6em 1em; }
+  .home__intro { font-size: .8em; }
+}
+
+/* ---------- Modo "quiet" / accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .screen.is-booting { animation: none; }
+}
+
+/* ---------- Impresión (informe) ---------- */
+@media print {
+  .room, .scene { position: static; display: block; height: auto; }
+  .screen { position: static; color: #000; background: #fff; }
+  .crt, .taskbar, .ticker, .rail, .boot, .standby, .toasts { display: none !important; }
+  .win { position: static !important; width: 100% !important; height: auto !important; border: 0; }
+  .win__bar { background: #eee !important; color: #000 !important; }
+  .win__body { overflow: visible; }
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Turboincidencias 3000 — Análisis de incidencias TI</title>
+<meta name="description" content="Analiza tu XML de incidencias dentro de un CRT de los 90: filtros de calidad, combinaciones rápidas, estadísticas en vivo y exportación. Todo en tu navegador, sin subir nada a ningún servidor.">
+<meta name="theme-color" content="#0a0805">
+<meta property="og:title" content="Turboincidencias 3000">
+<meta property="og:description" content="Un analizador de incidencias TI con la estética de un monitor CRT de 1998. Arrastra tu XML y descubre qué está pasando de verdad.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23120e08'/%3E%3Crect x='4' y='6' width='24' height='18' rx='2' fill='none' stroke='%23f0a63c' stroke-width='2'/%3E%3Crect x='11' y='26' width='10' height='2' fill='%23f0a63c'/%3E%3Cpath d='M8 20l4-6 4 4 3-5 5 7' fill='none' stroke='%23f0a63c' stroke-width='1.6'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/os.css">
+<link rel="stylesheet" href="css/windows.css">
+<link rel="stylesheet" href="css/widgets.css">
+<link rel="stylesheet" href="css/views.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="room" id="room">
+  <div class="lightshaft lightshaft--a" aria-hidden="true"></div>
+  <div class="lightshaft lightshaft--b" aria-hidden="true"></div>
+  <div class="dust" id="dust" aria-hidden="true"></div>
+  <div class="floor" aria-hidden="true"></div>
+
+  <div class="scene" id="scene">
+    <div class="monitor" id="monitor">
+      <div class="monitor__shadow" aria-hidden="true"></div>
+      <div class="monitor__spill" aria-hidden="true"></div>
+
+      <div class="monitor__case">
+        <div class="monitor__sticker">TURBO<b>SYSTEMS</b> · CRT-3000</div>
+
+        <div class="monitor__bezel">
+          <div class="monitor__glass" id="glass">
+
+            <div class="screen is-booting" id="screen" data-theme="amber">
+              <div class="os">
+                <!-- ============ RAIL ============ -->
+                <aside class="rail" aria-label="Aplicaciones">
+                  <div class="rail__grid" id="railGrid">
+                    <button class="rail__btn" data-open="analisis" data-icon="chart"><span>Análisis</span></button>
+                    <button class="rail__btn" data-open="datos" data-icon="floppy"><span>Datos</span></button>
+                    <button class="rail__btn" data-open="filtros" data-icon="funnel"><span>Filtros</span></button>
+                    <button class="rail__btn" data-open="informe" data-icon="doc"><span>Informe</span></button>
+                    <button class="rail__btn" data-open="registro" data-icon="terminal"><span>Registro</span></button>
+                    <button class="rail__btn" data-open="acerca" data-icon="info"><span>Acerca de</span></button>
+                    <button class="rail__btn" data-open="exportar" data-icon="download"><span>Exportar</span></button>
+                    <button class="rail__btn" data-action="load" data-icon="upload"><span>Cargar XML</span></button>
+                  </div>
+
+                  <div class="rail__sep"></div>
+                  <div class="rail__badge" id="railBadge">
+                    <i></i><span id="railBadgeText">sin datos</span>
+                  </div>
+
+                  <div class="rail__foot">
+                    <b>TURBO/OS</b><br>v3.0 · 1998—2026
+                  </div>
+                </aside>
+
+                <!-- ============ WORKSPACE ============ -->
+                <main class="workspace" id="workspace">
+                  <section class="home" id="home" aria-label="Escritorio">
+                    <div class="home__meta">
+                      <span>Escritorio / <b id="homeDoc">sin documento</b></span>
+                      <span id="homeDate">—</span>
+                    </div>
+
+                    <p class="home__intro">
+                      Analista de incidencias <strong>TI</strong>.<br>
+                      Arrastra tu <code>incidencies.xml</code> y descubre qué está
+                      pasando de verdad: calidad del dato, prioridades, marcas y
+                      tendencias. <span class="caret" aria-hidden="true"></span>
+                    </p>
+
+                    <div class="home__bottom">
+                      <div>
+                        <h1 class="home__title">
+                          <span class="l1">TURBO</span>
+                          <span class="l2">INCIDENCIAS<s>3000</s></span>
+                        </h1>
+                        <p class="home__link">
+                          <span>Abre un icono de la izquierda para empezar</span>
+                        </p>
+                      </div>
+
+                      <div class="home__aside">
+                        <div class="home__cta">
+                          <button class="btn btn--primary" data-action="load" data-icon="upload">Cargar XML</button>
+                          <button class="btn" data-action="demo" data-icon="floppy">Ver demo</button>
+                        </div>
+                        <div class="home__stats" id="homeStats">
+                          <div class="home__stat"><b id="hsTotal">—</b><span>Incidencias</span></div>
+                          <div class="home__stat"><b id="hsValid">—</b><span>Válidas</span></div>
+                          <div class="home__stat"><b id="hsQuality">—</b><span>Calidad</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <div class="win-layer" id="winLayer"></div>
+                </main>
+
+                <div class="ticker" id="ticker">
+                  <span class="ticker__label">Ahora</span>
+                  <span class="ticker__dot" aria-hidden="true"></span>
+                  <span class="ticker__text" id="tickerText">Ningún documento cargado · pulsa <b>Cargar XML</b> o usa el dataset de demostración</span>
+                  <span class="ticker__right" id="tickerRight">v3.0</span>
+                </div>
+
+                <!-- ============ TASKBAR ============ -->
+                <div class="taskbar" id="taskbar" role="toolbar" aria-label="Barra de tareas">
+                  <div class="taskbar__apps" id="taskbarApps">
+                    <button data-action="home" data-icon="pc" title="Escritorio" aria-label="Escritorio"></button>
+                    <button data-open="analisis" data-icon="chart" title="Análisis" aria-label="Análisis"></button>
+                    <button data-open="datos" data-icon="floppy" title="Datos" aria-label="Datos"></button>
+                    <button data-open="filtros" data-icon="funnel" title="Filtros" aria-label="Filtros"></button>
+                    <button data-open="informe" data-icon="doc" title="Informe" aria-label="Informe"></button>
+                    <button data-open="registro" data-icon="terminal" title="Registro" aria-label="Registro"></button>
+                    <button data-open="exportar" data-icon="download" title="Exportar" aria-label="Exportar"></button>
+                    <button data-open="acerca" data-icon="info" title="Acerca de" aria-label="Acerca de"></button>
+                  </div>
+
+                  <div class="taskbar__tabs" id="taskbarTabs"></div>
+
+                  <div class="taskbar__tray">
+                    <button class="tray__btn is-off" id="soundBtn" title="Activar sonido" aria-label="Activar sonido" data-icon="speaker"></button>
+                    <button class="tray__btn is-on" id="tiltBtn" title="Inclinación 3D" aria-label="Inclinación 3D" data-icon="monitor"></button>
+                    <button class="tray__btn" id="powerBtnTray" title="Apagar / encender" aria-label="Apagar o encender el monitor" data-icon="power"></button>
+                    <span class="tray__clock" id="clock">--:--</span>
+                  </div>
+                </div>
+
+                <div class="toasts" id="toasts" aria-live="polite"></div>
+              </div>
+
+              <!-- capas CRT -->
+              <div class="crt crt--scan" aria-hidden="true"></div>
+              <div class="crt crt--grille" aria-hidden="true"></div>
+              <div class="crt crt--vignette" aria-hidden="true"></div>
+              <div class="crt crt--glare" id="glare" aria-hidden="true"></div>
+              <div class="crt crt--flicker" aria-hidden="true"></div>
+
+              <!-- arranque -->
+              <div class="boot" id="boot" aria-hidden="true">
+                <div id="bootLines"></div>
+                <button class="boot__skip" id="bootSkip">saltar [ESC]</button>
+              </div>
+
+              <!-- standby -->
+              <div class="standby" id="standby">
+                <div>
+                  <p>SIN SEÑAL</p>
+                  <small>pulsa para encender</small>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="monitor__vents" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+
+        <div class="monitor__chin">
+          <span class="brand">TURBO<b>3000</b><em>HIGH RESOLUTION</em></span>
+          <div class="chin__controls">
+            <button class="mini-btn" tabindex="-1" aria-hidden="true"></button>
+            <button class="mini-btn" tabindex="-1" aria-hidden="true"></button>
+            <span class="led is-off" id="led" aria-hidden="true"></span>
+            <button class="power" id="powerBtn" aria-label="Encender o apagar el monitor" data-icon="power"></button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="monitor__neck" aria-hidden="true"></div>
+      <div class="monitor__base" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="deskprops" aria-hidden="true">
+    <div class="keyboard" id="keyboard"></div>
+    <div class="mouse"></div>
+    <div class="cable"></div>
+  </div>
+
+  <p class="hint-3d">mueve el cursor · inclinación 3D · <span id="hintFocus">F para pantalla plana</span></p>
+</div>
+
+<input type="file" id="fileInput" accept=".xml,text/xml,application/xml" hidden>
+
+<noscript>
+  <div style="position:fixed;inset:0;display:grid;place-items:center;background:#0a0805;color:#f0a63c;font-family:monospace;text-align:center;padding:2rem;z-index:999">
+    <p>Turboincidencias 3000 necesita JavaScript.<br>Actívalo y recarga la página.</p>
+  </div>
+</noscript>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

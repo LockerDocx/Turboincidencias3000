@@ -1,0 +1,14 @@
+{
+  "name": "turboincidencias3000",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Analizador de incidencias TI dentro de un CRT de los 90. Port web de incidencias_basico.py.",
+  "scripts": {
+    "dev": "python3 -m http.server 4173 --bind 0.0.0.0",
+    "gen:demo": "node tools/gen-demo.js",
+    "check": "node tools/check.js"
+  },
+  "keywords": ["incidencias", "xml", "crt", "retro", "analytics"],
+  "license": "MIT"
+}

@@ -1,0 +1,232 @@
+/* ============================================================
+   Turboincidencias 3000 — windows.css
+   Ventanas arrastrables del escritorio
+   ============================================================ */
+
+.win-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.win-layer > * { pointer-events: auto; }
+
+.win {
+  position: absolute;
+  left: var(--x, 8%);
+  top: var(--y, 6%);
+  width: var(--w, 62%);
+  height: var(--h, 72%);
+  display: flex;
+  flex-direction: column;
+  min-width: 24em;
+  min-height: 12em;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: .22em;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, .8),
+    0 1.2em 2.6em rgba(0, 0, 0, .7),
+    0 0 2.4em rgba(var(--phos-rgb), .07);
+  overflow: hidden;
+  animation: win-in .28s var(--ease-out);
+  transform-origin: top center;
+}
+@keyframes win-in {
+  from { opacity: 0; transform: translateY(.6em) scale(.985); }
+  to { opacity: 1; transform: none; }
+}
+
+.win.is-hidden { display: none; }
+.win.is-min { display: none; }
+
+.win.is-max {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.win.is-focused {
+  border-color: var(--phos);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, .9),
+    0 1.2em 2.6em rgba(0, 0, 0, .75),
+    0 0 2.2em rgba(var(--phos-rgb), .13);
+}
+
+/* ---------- Barra de título ---------- */
+.win__bar {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  height: 2.05em;
+  padding: 0 .35em 0 .7em;
+  flex: none;
+  cursor: grab;
+  background:
+    linear-gradient(180deg, var(--phos-hi), var(--phos) 45%, var(--phos-mid) 100%);
+  color: #1a1002;
+  text-shadow: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .35);
+  position: relative;
+  touch-action: none;
+}
+.win__bar::after {
+  content: "";
+  position: absolute;
+  inset: 1px 1px auto 1px;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .38), transparent);
+  pointer-events: none;
+}
+.win__bar:active { cursor: grabbing; }
+
+.win:not(.is-focused) .win__bar {
+  background: var(--bg-3);
+  color: var(--phos-dim);
+  border-bottom: 1px solid var(--line);
+}
+.win:not(.is-focused) .win__bar::after { display: none; }
+
+.win__title {
+  font-family: var(--font-pixel);
+  font-size: .96em;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+.win__title svg { width: 1.1em; height: 1.1em; }
+
+.win__ctrls {
+  display: flex;
+  gap: 3px;
+  flex: none;
+}
+.win__ctrls button {
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid rgba(0, 0, 0, .55);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .35), rgba(0, 0, 0, .12));
+  color: inherit;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
+}
+.win__ctrls button:hover { background: rgba(255, 255, 255, .5); }
+.win__ctrls button:active { transform: translateY(1px); }
+.win__ctrls svg { width: .82em; height: .82em; }
+.win:not(.is-focused) .win__ctrls button {
+  border-color: var(--line);
+  background: rgba(var(--phos-rgb), .06);
+}
+.win:not(.is-focused) .win__ctrls button:hover { background: rgba(var(--phos-rgb), .18); }
+
+/* ---------- Migas de pan ---------- */
+.win__crumbs {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: .45em;
+  padding: .32em .8em;
+  font-size: .72em;
+  letter-spacing: .06em;
+  color: var(--phos-dim);
+  border-bottom: 1px solid var(--line);
+  background: rgba(var(--phos-rgb), .025);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.win__crumbs b { color: var(--phos); font-weight: 500; }
+.win__crumbs span { color: var(--phos-faint); }
+.win__crumbs .sep { color: var(--phos-faint); }
+
+/* ---------- Cuerpo ---------- */
+.win__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 1em 1.1em 1.4em;
+  scrollbar-width: thin;
+  scrollbar-color: var(--phos-dim) transparent;
+  user-select: text;
+  container-type: inline-size;
+}
+.win__body--flush { padding: 0; }
+.win__body::-webkit-scrollbar { width: .7em; height: .7em; }
+.win__body::-webkit-scrollbar-track { background: rgba(var(--phos-rgb), .04); }
+.win__body::-webkit-scrollbar-thumb {
+  background: var(--phos-faint);
+  border: 2px solid var(--bg-3);
+}
+.win__body::-webkit-scrollbar-thumb:hover { background: var(--phos-dim); }
+
+.win__status {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  padding: .28em .8em;
+  border-top: 1px solid var(--line);
+  font-size: .7em;
+  letter-spacing: .08em;
+  color: var(--phos-faint);
+  background: var(--bg-2);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.win__status b { color: var(--phos-dim); font-weight: 500; }
+
+/* asa de redimensionado */
+.win__grip {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: .9em;
+  height: .9em;
+  cursor: nwse-resize;
+  background:
+    linear-gradient(135deg, transparent 45%, var(--phos-faint) 45% 55%, transparent 55%),
+    linear-gradient(135deg, transparent 65%, var(--phos-faint) 65% 75%, transparent 75%);
+  opacity: .8;
+  z-index: 4;
+}
+.win.is-max .win__grip { display: none; }
+
+/* variante que ocupa todo el espacio sin arrastre (móvil) */
+.win.is-pinned {
+  position: absolute !important;
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0;
+  border-radius: 0;
+  border: 0;
+}
+
+@media (max-width: 820px) {
+  .win {
+    min-width: 0;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    box-shadow: none;
+  }
+  .win__grip { display: none; }
+}
